@@ -76,7 +76,10 @@ public class Home {
 			      int returnValue = fileChooser.showOpenDialog(null);
 			      if (returnValue == JFileChooser.APPROVE_OPTION) {
 			    	  File selectedFile = fileChooser.getSelectedFile();
-			    	  FileInput data = new FileInput(selectedFile);
+			    	  //THIS IS WHERE WE NEED TO ADD MAX/MIN Poss
+			    	  float minPoss = 0;
+			    	  float maxPoss = 100; // to be changed
+			    	  FileInput data = new FileInput(selectedFile, maxPoss, minPoss);
 			    	  list = data.getFloatFileList();
 			    	  System.out.println(list);
 			      }

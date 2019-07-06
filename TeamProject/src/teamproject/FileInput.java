@@ -13,10 +13,13 @@ public class FileInput {
 	private Scanner scanner;
 	
 	private float input;
-	private float maxPoss = 100;
-	private float minPoss = 0;
+	private float maxPoss;
+	private float minPoss;
 	
-	public FileInput(File file) {
+	public FileInput(File file, float maxPoss, float minPoss) {
+		this.maxPoss = maxPoss;
+		this.minPoss = minPoss;
+		
 		this.file = file;
 		try {
 			scanner = new Scanner(file);
@@ -42,12 +45,12 @@ public class FileInput {
 			
 	}
 	
-	public void setMaxPoss(float maxPoss) {
-		this.maxPoss = maxPoss;
+	public float getMaxPoss() {
+		return maxPoss;
 	}
 	
-	public void setMinPoss(float minPoss) {
-		this.minPoss = minPoss;
+	public float getMinPoss() {
+		return minPoss;
 	}
 	
 	public ArrayList<Float> getFloatFileList(){
