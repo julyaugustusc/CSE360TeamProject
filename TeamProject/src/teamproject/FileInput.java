@@ -13,12 +13,11 @@ public class FileInput {
 	private Scanner scanner;
 	
 	private float input;
-	private float maxPoss;
-	private float minPoss;
+	private float maxPoss = 100;
+	private float minPoss = 0;
 	
-	public FileInput(String fileName) {
-		this.fileName = fileName;
-		file = new File(fileName);
+	public FileInput(File file) {
+		this.file = file;
 		try {
 			scanner = new Scanner(file);
 		} catch (FileNotFoundException e) {
