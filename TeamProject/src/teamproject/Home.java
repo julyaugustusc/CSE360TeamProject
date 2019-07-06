@@ -70,6 +70,10 @@ public class Home {
 		btnFile.setBounds(173, 178, 89, 23);
 		panel.add(btnFile);
 		
+		JButton btnNext = new JButton("Next");
+		btnNext.setBounds(335, 227, 89, 23);
+		panel.add(btnNext);
+		
 		btnFile.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent ae) {
 		    	  JFileChooser fileChooser = new JFileChooser();
