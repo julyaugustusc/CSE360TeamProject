@@ -83,7 +83,7 @@ public class Home {
 		JButton btnNext = new JButton("Next");
 		btnNext.setBounds(335, 227, 89, 23);
 		panel.add(btnNext);
-		
+	
 		JButton btnNext2 = new JButton("Next");
 		btnNext2.setBounds(335, 227, 89, 23);
 		
