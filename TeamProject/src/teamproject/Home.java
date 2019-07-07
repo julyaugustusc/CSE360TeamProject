@@ -48,7 +48,7 @@ public class Home {
 	private void initialize() {
 		frmGradeAnalitica = new JFrame();
 		frmGradeAnalitica.setFont(new Font("Canadara", Font.BOLD, 15));
-		frmGradeAnalitica.setBounds(100, 100, 450, 300);
+		frmGradeAnalitica.setBounds(100, 100, 600, 400);
 		frmGradeAnalitica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGradeAnalitica.getContentPane().setLayout(new GridLayout(0, 1, 0,0));
 		
@@ -58,20 +58,20 @@ public class Home {
 		
 		JLabel title = new JLabel("Grade Analitica");
 		title.setFont(new Font("Arial Black", Font.PLAIN, 29));
-		title.setBounds(94, 45, 252, 66);
+		title.setBounds(159, 81, 252, 66);
 		panel.add(title);
 		
 		JLabel subTitle = new JLabel("The #1 Grade Analysis Tool");
 		subTitle.setFont(new Font("Arial", Font.BOLD, 17));
-		subTitle.setBounds(117, 113, 206, 33);
+		subTitle.setBounds(179, 158, 206, 33);
 		panel.add(subTitle);
 		
 		JButton btnFile = new JButton("Input File");
-		btnFile.setBounds(173, 178, 89, 23);
+		btnFile.setBounds(238, 202, 89, 23);
 		panel.add(btnFile);
 		
 		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(335, 227, 89, 23);
+		btnNext.setBounds(485, 327, 89, 23);
 		panel.add(btnNext);
 		
 		btnFile.addActionListener(new ActionListener() {
