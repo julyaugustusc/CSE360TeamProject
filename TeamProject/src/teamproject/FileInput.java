@@ -16,7 +16,7 @@ public class FileInput {
 	private float maxPoss;
 	private float minPoss;
 	
-	public FileInput(File file, float maxPoss, float minPoss) {
+	public FileInput(File file, float minPoss, float maxPoss) {
 		this.maxPoss = maxPoss;
 		this.minPoss = minPoss;
 		
