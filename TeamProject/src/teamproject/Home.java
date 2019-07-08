@@ -41,8 +41,17 @@ public class Home {
 	
 	private JFrame frmHome;
 	private JFrame frmMain;
+	private JFrame frmAdd;
+	private JFrame frmRemove;
+	private JFrame frmChange;
+
+	private JTextField textField;
+	private JTextField newValField;
+	private JTextField delValField;
 	
 	private JLabel lblNewLabel = new JLabel("NewManualInput"); 
+	
+	private JButton btnSubmit = new JButton("Submit");
 
 	/**
 	 * Launch the application.
@@ -60,6 +69,10 @@ public class Home {
 					//Visibility for Frames or Windows
 					window.frmHome.setVisible(true);
 					window.frmMain.setVisible(false);
+					window.frmAdd.setVisible(false);
+					window.frmRemove.setVisible(false);
+					window.frmChange.setVisible(false);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -175,9 +188,7 @@ public class Home {
 				
 				//string to Float, but need error catcher later
 				maxPoss = Float.parseFloat(maxPossText.getText());
-				System.out.print(maxPoss);
 				minPoss = Float.parseFloat(minPossText.getText());	
-				System.out.print(minPoss);
 				
 				if(selectedFile == null) {
 					gaFile = new GradeAnalytics(minPoss, maxPoss);
@@ -281,7 +292,7 @@ public class Home {
 		
 		JButton btnNewButton = new JButton("Percentile");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent ae) {
 			}
 		});
 		
@@ -289,7 +300,7 @@ public class Home {
 		
 		JButton btnNewButton_1 = new JButton("Percentage");
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent ae) {
 			}
 		});
 		
@@ -372,6 +383,218 @@ public class Home {
 					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		rightPanel.setLayout(gl_rightBtnPanel);
+		
+		
+		
+		
+		//Frame for Adding Grade Window
+		frmAdd = new JFrame();
+		frmAdd.setBounds(100, 100, 600, 400);
+		frmAdd.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
+
+		JPanel addPanel = new JPanel();
+		frmAdd.getContentPane().add(addPanel);
+
+		textField = new JTextField();
+		textField.setColumns(10);
+
+		JLabel lblNewLabel1 = new JLabel("Add Grades");
+		lblNewLabel1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+
+		JLabel lblNewLabel_1 = new JLabel("Input Grade");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_panel = new GroupLayout(addPanel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(145)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(lblNewLabel1, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+						.addComponent(btnSubmit, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+					.addGap(160))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(27)
+					.addComponent(lblNewLabel1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addComponent(lblNewLabel_1)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(61)
+					.addComponent(btnSubmit)
+					.addContainerGap(41, Short.MAX_VALUE))
+		);
+		addPanel.setLayout(gl_panel);
+		frmAdd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		
+		
+		//Frame for Remove Grades Window
+		frmRemove = new JFrame();
+		frmRemove.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
+
+		JPanel chgPanel = new JPanel();
+		frmRemove.getContentPane().add(chgPanel);
+
+		JLabel removeLbl = new JLabel("Remove Grade");
+		removeLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
+		removeLbl.setHorizontalAlignment(SwingConstants.CENTER);
+
+		JLabel removeLbl1 = new JLabel("Choose Grade To Remove");
+		removeLbl1.setHorizontalAlignment(SwingConstants.CENTER);
+
+		//Connect this list to original list from main list
+		GroupLayout gl_chgPanel = new GroupLayout(chgPanel);
+		gl_chgPanel.setHorizontalGroup(
+			gl_chgPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_chgPanel.createSequentialGroup()
+					.addGap(145)
+					.addGroup(gl_chgPanel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(list, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(removeLbl1, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(removeLbl, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE))
+					.addGap(160))
+		);
+		gl_chgPanel.setVerticalGroup(
+			gl_chgPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_chgPanel.createSequentialGroup()
+					.addGap(27)
+					.addComponent(removeLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addComponent(removeLbl1)
+					.addGap(18)
+					.addComponent(list, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnSubmit)
+					.addContainerGap(22, Short.MAX_VALUE))
+		);
+		chgPanel.setLayout(gl_chgPanel);
+		frmRemove.setBounds(100, 100, 600, 400);
+		frmRemove.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		//Frame for the Change Grades Window
+		frmChange = new JFrame();
+		frmChange.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
+
+		JPanel chgPanel1 = new JPanel();
+		frmChange.getContentPane().add(chgPanel1);
+
+		JLabel chgLbl = new JLabel("Change Grade");
+		chgLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
+		chgLbl.setHorizontalAlignment(SwingConstants.CENTER);
+
+		JLabel newValLbl1 = new JLabel("New Value");
+		newValLbl1.setHorizontalAlignment(SwingConstants.CENTER);
+
+		newValField = new JTextField();
+		newValField.setColumns(10);
+
+		JLabel delvalLbl = new JLabel("Delete Value");
+		delvalLbl.setHorizontalAlignment(SwingConstants.CENTER);
+
+		delValField = new JTextField();
+		delValField.setColumns(10);
+		GroupLayout gl_chgPanel1 = new GroupLayout(chgPanel1);
+		gl_chgPanel1.setHorizontalGroup(
+			gl_chgPanel1.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_chgPanel1.createSequentialGroup()
+					.addGap(164)
+					.addComponent(newValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(184, Short.MAX_VALUE))
+					.addGroup(gl_chgPanel1.createSequentialGroup()
+					.addGap(165)
+					.addComponent(delValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(183, Short.MAX_VALUE))
+					.addGroup(gl_chgPanel1.createSequentialGroup()
+					.addGap(145)
+					.addGroup(gl_chgPanel1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_chgPanel1.createSequentialGroup()
+							.addGroup(gl_chgPanel1.createParallelGroup(Alignment.TRAILING)
+								.addComponent(newValLbl1, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+								.addComponent(chgLbl, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+							.addGap(160))
+						.addGroup(gl_chgPanel1.createSequentialGroup()
+							.addGroup(gl_chgPanel1.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(delvalLbl, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+							.addContainerGap())))
+		);
+		gl_chgPanel1.setVerticalGroup(
+			gl_chgPanel1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_chgPanel1.createSequentialGroup()
+					.addGap(27)
+					.addComponent(chgLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addComponent(newValLbl1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(newValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(delvalLbl)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(delValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+					.addComponent(btnSubmit)
+					.addContainerGap())
+		);
+		chgPanel1.setLayout(gl_chgPanel1);
+		frmChange.setBounds(100, 100, 600, 400);
+		frmChange.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//ActionLISTENERS for add/remove/change grades
+		
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(false);
+				frmAdd.setVisible(true);
+			}
+		});
+		
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(false);
+				frmRemove.setVisible(true);
+			}
+		});
+		
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(false);
+				frmChange.setVisible(true);
+			}
+		});
+		
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				//TODO Process all screens
+				if (frmAdd.isVisible()) {
+					
+				} else if (frmRemove.isVisible()) {
+					
+				} else {
+					
+				}
+				
+				
+				frmMain.setVisible(true);
+				frmAdd.setVisible(false);
+				frmRemove.setVisible(false);
+				frmChange.setVisible(false);
+				
+			}
+		});
+		
+		
+			
+		
+		
+		
+		
 	}
 	
 	private static void addPopup(Component component, final JPopupMenu popup) {
