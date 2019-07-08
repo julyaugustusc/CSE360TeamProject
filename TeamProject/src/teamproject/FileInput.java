@@ -16,9 +16,11 @@ public class FileInput {
 	private float maxPoss;
 	private float minPoss;
 	
-	public FileInput(String fileName) {
-		this.fileName = fileName;
-		file = new File(fileName);
+	public FileInput(File file, float minPoss, float maxPoss) {
+		this.maxPoss = maxPoss;
+		this.minPoss = minPoss;
+		
+		this.file = file;
 		try {
 			scanner = new Scanner(file);
 		} catch (FileNotFoundException e) {
@@ -43,16 +45,12 @@ public class FileInput {
 			
 	}
 	
-	public FileInput(File selectedFile, float minPoss2, float maxPoss2) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public void setMaxPoss(float maxPoss) {
-		this.maxPoss = maxPoss;
+	public float getMaxPoss() {
+		return maxPoss;
 	}
 	
-	public void setMinPoss(float minPoss) {
-		this.minPoss = minPoss;
+	public float getMinPoss() {
+		return minPoss;
 	}
 	
 	public ArrayList<Float> getFloatFileList(){
