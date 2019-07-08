@@ -32,6 +32,8 @@ public class Home {
 	
 	private GradeAnalytics gaFile;
 	
+	private static Home window;
+	
 	private JFrame frmHome;
 	private JFrame frmMain;
 
@@ -46,7 +48,7 @@ public class Home {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Home window = new Home();
+					window = new Home();
 					
 					//Visibility for Frames or Windows
 					window.frmHome.setVisible(true);
@@ -176,9 +178,8 @@ public class Home {
 			    	gaFile = new GradeAnalytics(list, minPoss, maxPoss);
 				}
 				
-				panel.removeAll();
-				//TODO ADD All buttons for next screen
-				panel.repaint();
+				window.frmHome.setVisible(false);
+				window.frmMain.setVisible(true);
 				
 			}
 		});
