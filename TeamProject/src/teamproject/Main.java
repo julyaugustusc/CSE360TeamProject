@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 
 public class Main {
 
-	private JFrame frmGradeAnalitica;
+	private JFrame frmMain;
 
 	/**
 	 * Launch the application.
@@ -28,7 +28,7 @@ public class Main {
 			public void run() {
 				try {
 					Main window = new Main();
-					window.frmGradeAnalitica.setVisible(true);
+					window.frmMain.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,13 +47,13 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmGradeAnalitica = new JFrame();
-		frmGradeAnalitica.setTitle("Grade Analitica");
-		frmGradeAnalitica.setBounds(100, 100, 600, 400);
-		frmGradeAnalitica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMain = new JFrame();
+		frmMain.setTitle("Grade Analitica");
+		frmMain.setBounds(100, 100, 600, 400);
+		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		frmGradeAnalitica.getContentPane().add(panel, BorderLayout.CENTER);
+		frmMain.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		JPanel leftBtnPanel = new JPanel();
