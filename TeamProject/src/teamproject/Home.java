@@ -41,6 +41,8 @@ public class Home {
 	
 	private JFrame frmHome;
 	private JFrame frmMain;
+	
+	private JLabel lblNewLabel = new JLabel("NewManualInput"); 
 
 	/**
 	 * Launch the application.
@@ -173,7 +175,9 @@ public class Home {
 				
 				//string to Float, but need error catcher later
 				maxPoss = Float.parseFloat(maxPossText.getText());
+				System.out.print(maxPoss);
 				minPoss = Float.parseFloat(minPossText.getText());	
+				System.out.print(minPoss);
 				
 				if(selectedFile == null) {
 					gaFile = new GradeAnalytics(minPoss, maxPoss);
@@ -181,6 +185,8 @@ public class Home {
 					FileInput data = new FileInput(selectedFile, minPoss, maxPoss);
 			    	list = data.getFloatFileList();
 			    	gaFile = new GradeAnalytics(list, minPoss, maxPoss);
+			    	
+			    	lblNewLabel.setText(selectedFile.getName());
 				}
 				
 				window.frmHome.setVisible(false);
@@ -265,12 +271,10 @@ public class Home {
 		leftBtnPanel.setLayout(gl_leftBtnPanel);
 		
 		
-		
 		//Initialization for middle panel buttons
 		JPanel midPanel = new JPanel();
 		panelMain.add(midPanel);
 		
-		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JList list = new JList();
