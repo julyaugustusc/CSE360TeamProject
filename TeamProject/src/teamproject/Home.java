@@ -92,12 +92,20 @@ public class Home {
 	 */
 	private void initialize() {
 		
+		/*JOptionPane optionPane = new JOptionPane(
+			    "Are You Sure?\n",
+			    JOptionPane.QUESTION_MESSAGE,
+			    JOptionPane.YES_NO_OPTION);*/
+		
+		
 		//Frame For Home Screen
 		frmHome = new JFrame();
 		frmHome.setFont(new Font("Canadara", Font.BOLD, 15));
 		frmHome.setBounds(100, 100, 600, 400);
 		frmHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHome.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		
+		
 		
 		//JOptionPane.showMessageDialog(frmHome, "Invalid File.");
 		//JOptionPane.showMessageDialog(frmHome, "Cannot Find File.");
@@ -438,8 +446,8 @@ public class Home {
 		frmRemove = new JFrame();
 		frmRemove.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 
-		JPanel chgPanel = new JPanel();
-		frmRemove.getContentPane().add(chgPanel);
+		JPanel removePanel = new JPanel();
+		frmRemove.getContentPane().add(removePanel);
 
 		JLabel removeLbl = new JLabel("Remove Grade");
 		removeLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -449,21 +457,21 @@ public class Home {
 		removeLbl1.setHorizontalAlignment(SwingConstants.CENTER);
 
 		//Connect this list to original list from main list
-		GroupLayout gl_chgPanel = new GroupLayout(chgPanel);
-		gl_chgPanel.setHorizontalGroup(
-			gl_chgPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_chgPanel.createSequentialGroup()
+		GroupLayout gl_removePanel = new GroupLayout(removePanel);
+		gl_removePanel.setHorizontalGroup(
+			gl_removePanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_removePanel.createSequentialGroup()
 					.addGap(145)
-					.addGroup(gl_chgPanel.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_removePanel.createParallelGroup(Alignment.TRAILING)
 						.addComponent(list, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
 						.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
 						.addComponent(removeLbl1, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
 						.addComponent(removeLbl, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE))
 					.addGap(160))
 		);
-		gl_chgPanel.setVerticalGroup(
-			gl_chgPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_chgPanel.createSequentialGroup()
+		gl_removePanel.setVerticalGroup(
+			gl_removePanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_removePanel.createSequentialGroup()
 					.addGap(27)
 					.addComponent(removeLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addGap(36)
@@ -474,7 +482,7 @@ public class Home {
 					.addComponent(btnSubmit)
 					.addContainerGap(22, Short.MAX_VALUE))
 		);
-		chgPanel.setLayout(gl_chgPanel);
+		removePanel.setLayout(gl_removePanel);
 		frmRemove.setBounds(100, 100, 600, 400);
 		frmRemove.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -482,8 +490,8 @@ public class Home {
 		frmChange = new JFrame();
 		frmChange.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 
-		JPanel chgPanel1 = new JPanel();
-		frmChange.getContentPane().add(chgPanel1);
+		JPanel chgPanel = new JPanel();
+		frmChange.getContentPane().add(chgPanel);
 
 		JLabel chgLbl = new JLabel("Change Grade");
 		chgLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -500,30 +508,23 @@ public class Home {
 
 		delValField = new JTextField();
 		delValField.setColumns(10);
-		GroupLayout gl_chgPanel1 = new GroupLayout(chgPanel1);
+		GroupLayout gl_chgPanel1 = new GroupLayout(chgPanel);
 		gl_chgPanel1.setHorizontalGroup(
 			gl_chgPanel1.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_chgPanel1.createSequentialGroup()
-					.addGap(164)
-					.addComponent(newValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(184, Short.MAX_VALUE))
-					.addGroup(gl_chgPanel1.createSequentialGroup()
-					.addGap(165)
-					.addComponent(delValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(183, Short.MAX_VALUE))
-					.addGroup(gl_chgPanel1.createSequentialGroup()
+				.addGroup(gl_chgPanel1.createSequentialGroup()
 					.addGap(145)
 					.addGroup(gl_chgPanel1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_chgPanel1.createSequentialGroup()
+						.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
+							.addComponent(newValLbl1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+							.addGap(246))
+						.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
 							.addGroup(gl_chgPanel1.createParallelGroup(Alignment.TRAILING)
-								.addComponent(newValLbl1, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-								.addComponent(chgLbl, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-							.addGap(160))
-						.addGroup(gl_chgPanel1.createSequentialGroup()
-							.addGroup(gl_chgPanel1.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(delvalLbl, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-							.addContainerGap())))
+								.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+								.addComponent(newValField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+								.addComponent(chgLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+								.addComponent(delValField, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+								.addComponent(delvalLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+							.addGap(160))))
 		);
 		gl_chgPanel1.setVerticalGroup(
 			gl_chgPanel1.createParallelGroup(Alignment.LEADING)
@@ -534,15 +535,15 @@ public class Home {
 					.addComponent(newValLbl1)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(newValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+					.addGap(75)
 					.addComponent(delvalLbl)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(delValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
 					.addComponent(btnSubmit)
 					.addContainerGap())
 		);
-		chgPanel1.setLayout(gl_chgPanel1);
+		chgPanel.setLayout(gl_chgPanel1);
 		frmChange.setBounds(100, 100, 600, 400);
 		frmChange.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
