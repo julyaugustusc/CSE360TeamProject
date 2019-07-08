@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -18,10 +20,13 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+
+import java.awt.Component;
 
 public class Home {
 	
@@ -207,6 +212,18 @@ public class Home {
 		
 		JButton btnHome = new JButton("Home");
 		
+		JPopupMenu popupMenu = new JPopupMenu();
+		popupMenu.setLabel("Grades Menu");
+		addPopup(btnChangeGrades, popupMenu);
+		
+		JButton btnNewButton_3 = new JButton("Add Grades       ");
+		popupMenu.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("Remove Grade  ");
+		popupMenu.add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("Update Grade   ");
+		popupMenu.add(btnNewButton_5);
 		//Window is split into three different panels, the left, mid, and right panels. 
 		//Each panel has their one set of buttons and elements
 		//Each panel has their own layout manager, i used the Group Layout for each panel
@@ -351,6 +368,24 @@ public class Home {
 					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		rightPanel.setLayout(gl_rightBtnPanel);
+	}
+	
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 		
 }
