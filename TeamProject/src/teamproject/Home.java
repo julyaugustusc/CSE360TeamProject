@@ -174,10 +174,12 @@ public class Home {
 			      if (returnValue == JFileChooser.APPROVE_OPTION) {
 			    	  selectedFile = fileChooser.getSelectedFile();
 			    	  
-			
-			    	  
-			    	
-			    	  
+			    	  if (selectedFile.getName().endsWith(".txt") != true) {
+				    	   JOptionPane.showMessageDialog(panel, "Invalid File", "Error", JOptionPane.ERROR_MESSAGE);
+				    	  
+				      }
+			    	  else {
+			    		  
 			    	  panel.removeAll();
 			    	  
 			    	  panel.add(minText);
@@ -188,8 +190,7 @@ public class Home {
 			    	  
 			    	  panel.repaint();
 			      }
-			      
-			   
+			     }
 			      
 			      
 			    	//  JOptionPane.showMessageDialog(panel, "Invalid File", "Error", JOptionPane.ERROR_MESSAGE);
@@ -220,6 +221,10 @@ public class Home {
 				maxPoss = Float.parseFloat(maxPossText.getText());
 				minPoss = Float.parseFloat(minPossText.getText());	
 				
+				if (minPoss > 0 || maxPoss > 0) {
+					JOptionPane.showMessageDialog(panel, "Invalid Bounds", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+					
 				if(selectedFile == null) {
 					gaFile = new GradeAnalytics(minPoss, maxPoss);
 				} else {
@@ -237,6 +242,7 @@ public class Home {
 			    	median.setText("" + gaFile.getMedian());
 			    	
 				}
+			
 				
 				window.frmHome.setVisible(false);
 				window.frmMain.setVisible(true);
