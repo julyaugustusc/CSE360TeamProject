@@ -93,6 +93,14 @@ public class GradeAnalytics {
 		this.maxPoss = maxPoss;
 	}
 	
+	public void setList(ArrayList<Float> list) {
+		this.list = list;
+	}
+	
+	public ArrayList<Float> getList() {
+		return list;
+	}
+	
 	/** Determines max score received 
 	 * 
 	 */

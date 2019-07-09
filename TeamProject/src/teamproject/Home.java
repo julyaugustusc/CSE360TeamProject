@@ -53,7 +53,6 @@ public class Home {
 	
 	private JLabel lblNewLabel = new JLabel("NewManualInput"); 
 	
-	private JButton btnSubmit = new JButton("Submit");
 	private DefaultListModel<Float> model;
 
 	/**
@@ -405,6 +404,8 @@ public class Home {
 
 		textField = new JTextField();
 		textField.setColumns(10);
+		
+		JButton btnSubmit = new JButton("Submit");
 
 		JLabel lblNewLabel1 = new JLabel("Add Grades");
 		lblNewLabel1.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -449,6 +450,8 @@ public class Home {
 		JPanel removePanel = new JPanel();
 		frmRemove.getContentPane().add(removePanel);
 		
+		JButton btnSubmit1 = new JButton("Submit");
+		
 		//needed to display float values on JList
 		model = new DefaultListModel<Float>();
 		JList<Float> list2 = new JList<Float>(model);
@@ -468,7 +471,7 @@ public class Home {
 					.addGap(145)
 					.addGroup(gl_removePanel.createParallelGroup(Alignment.TRAILING)
 						.addComponent(list2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-						.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(btnSubmit1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
 						.addComponent(removeLbl1, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
 						.addComponent(removeLbl, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE))
 					.addGap(160))
@@ -483,7 +486,7 @@ public class Home {
 					.addGap(18)
 					.addComponent(list2, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(btnSubmit)
+					.addComponent(btnSubmit1)
 					.addContainerGap(22, Short.MAX_VALUE))
 		);
 		removePanel.setLayout(gl_removePanel);
@@ -498,6 +501,8 @@ public class Home {
 
 		JPanel chgPanel = new JPanel();
 		frmChange.getContentPane().add(chgPanel);
+		
+		JButton btnSubmit2 = new JButton("Submit");
 
 		JLabel chgLbl = new JLabel("Change Grade");
 		chgLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -525,7 +530,7 @@ public class Home {
 									.addGap(246))
 							.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
 							.addGroup(gl_chgPanel1.createParallelGroup(Alignment.TRAILING)
-									.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+									.addComponent(btnSubmit2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
 									.addComponent(newValField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
 									.addComponent(chgLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
 									.addComponent(delValField, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
@@ -546,7 +551,7 @@ public class Home {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(delValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-					.addComponent(btnSubmit)
+					.addComponent(btnSubmit2)
 					.addContainerGap())
 		);
 		chgPanel.setLayout(gl_chgPanel1);
@@ -583,24 +588,41 @@ public class Home {
 		
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				//TODO Process all screens
-				if (frmAdd.isVisible()) {
-					
-				} else if (frmRemove.isVisible()) {
-					
-				} else {
-					
-				}
-				
+				float tempToAdd = Float.parseFloat(textField.getText());
+				list.add(tempToAdd);
+				gaFile.setList(list);
+				System.out.print(list);
 				
 				frmMain.setVisible(true);
-				frmAdd.setVisible(false);
+				frmAdd.setVisible(false);	
+			}
+		});
+		
+		btnSubmit1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				int indexOfTempToRemove = list2.getSelectedIndex();
+				list.remove(indexOfTempToRemove);
+				gaFile.setList(list);
+				
+				frmMain.setVisible(true);
 				frmRemove.setVisible(false);
+		
+			}
+		});
+		
+		btnSubmit2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				float tempToAdd = Float.parseFloat(newValField.getText());
+				float tempToDel = Float.parseFloat(delValField.getText());
+				
+				gaFile.replaceGrade(tempToDel, tempToAdd);
+				list = gaFile.getList();
+				
+				frmMain.setVisible(true);
 				frmChange.setVisible(false);
 				
 			}
 		});
-		
 		
 			
 		
