@@ -57,6 +57,7 @@ public class Home {
 	private JLabel lblNewLabel = new JLabel("NewManualInput"); 
 	
 	private DefaultListModel<Float> model;
+	private DefaultListModel<Float> model1;
 
 	/**
 	 * Launch the application.
@@ -284,7 +285,7 @@ public class Home {
 		JPanel midPanel = new JPanel();
 		panelMain.add(midPanel);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		//I took this out for a reason don't put it back plz JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JButton btnNewButton = new JButton("Percentile");
@@ -552,7 +553,10 @@ public class Home {
 					.addContainerGap())
 		);
 		
-		JList list3 = new JList();
+		//needed to display float values on JList
+		model1 = new DefaultListModel<Float>();
+		JList<Float> list3 = new JList<Float>((model1));
+		
 		scrollchgPane.setViewportView(list3);
 		chgPanel.setLayout(gl_chgPanel);
 		frmChange.setBounds(100, 100, 600, 400);
@@ -562,6 +566,8 @@ public class Home {
 		
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				textField.setText("");
+				
 				frmMain.setVisible(false);
 				frmAdd.setVisible(true);
 			}
@@ -581,6 +587,13 @@ public class Home {
 		
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				newValField.setText("");
+				
+				model1.clear();
+				for (int i = 0; i < list.size(); i++) {
+					model1.add(i,list.get(i));
+				}
+				
 				frmMain.setVisible(false);
 				frmChange.setVisible(true);
 			}
@@ -615,7 +628,8 @@ public class Home {
 		btnSubmit2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				float tempToAdd = Float.parseFloat(newValField.getText());
-				float tempToDel = Float.parseFloat(delValField.getText());
+				float tempToDel = list3.getSelectedValue();
+				
 				
 				gaFile.replaceGrade(tempToDel, tempToAdd);
 				list = gaFile.getList();
@@ -624,6 +638,27 @@ public class Home {
 				frmMain.setVisible(true);
 				frmChange.setVisible(false);
 				
+			}
+		});
+		
+		btnBack2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(true);
+				frmAdd.setVisible(false);
+			}
+		});
+		
+		btnBack1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(true);
+				frmRemove.setVisible(false);
+			}
+		});
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(true);
+				frmChange.setVisible(false);
 			}
 		});
 		
