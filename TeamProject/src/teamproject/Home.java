@@ -591,7 +591,7 @@ public class Home {
 				float tempToAdd = Float.parseFloat(textField.getText());
 				list.add(tempToAdd);
 				gaFile.setList(list);
-				System.out.print(list);
+				System.out.println(list);
 				
 				frmMain.setVisible(true);
 				frmAdd.setVisible(false);	
@@ -601,8 +601,10 @@ public class Home {
 		btnSubmit1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				int indexOfTempToRemove = list2.getSelectedIndex();
-				list.remove(indexOfTempToRemove);
-				gaFile.setList(list);
+				float tempToDel = list2.getSelectedValue();
+				gaFile.deleteGrade(tempToDel);
+				list = gaFile.getList();
+				System.out.println(list);
 				
 				frmMain.setVisible(true);
 				frmRemove.setVisible(false);
@@ -617,17 +619,13 @@ public class Home {
 				
 				gaFile.replaceGrade(tempToDel, tempToAdd);
 				list = gaFile.getList();
+				System.out.println(list);
 				
 				frmMain.setVisible(true);
 				frmChange.setVisible(false);
 				
 			}
 		});
-		
-			
-		
-		
-		
 		
 	}
 	

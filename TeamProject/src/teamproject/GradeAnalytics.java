@@ -324,7 +324,7 @@ public class GradeAnalytics {
 	 */
 	public void deleteGrade(float deletedGrade) {
 		indexOfList = 0;
-		while (list.get(indexOfList) != deletedGrade || indexOfList < list.size()) {
+		while (indexOfList < list.size() && list.get(indexOfList) != deletedGrade) {
 			indexOfList++;
 		}
 		if (list.get(indexOfList) == deletedGrade) {
@@ -342,7 +342,7 @@ public class GradeAnalytics {
 	 */
 	public void replaceGrade(float deletedGrade, float newGrade) {
 		indexOfList = 0;
-		while (list.get(indexOfList) != deletedGrade || indexOfList < list.size()) {
+		while (indexOfList < list.size() && list.get(indexOfList) != deletedGrade) {
 			indexOfList++;
 		}
 		if (list.get(indexOfList) == deletedGrade) {
