@@ -22,10 +22,13 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ListModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import java.awt.Component;
@@ -223,8 +226,8 @@ public class Home {
 		frmMain.getContentPane().add(panelMain, BorderLayout.CENTER);
 		panelMain.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		JPanel leftBtnPanel = new JPanel();
-		panelMain.add(leftBtnPanel);
+		JPanel rightBtnPanel = new JPanel();
+		panelMain.add(rightBtnPanel);
 		
 		JButton btnChangeGrades = new JButton("Change Grades");
 		
@@ -235,6 +238,34 @@ public class Home {
 		JButton btnViewAnalytics = new JButton("View Analytics");
 		
 		JButton btnHome = new JButton("Home");
+		GroupLayout gl_rightBtnPanel = new GroupLayout(rightBtnPanel);
+		gl_rightBtnPanel.setHorizontalGroup(
+			gl_rightBtnPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_rightBtnPanel.createSequentialGroup()
+					.addGap(38)
+					.addGroup(gl_rightBtnPanel.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnHome, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnExit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnSummary, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnViewAnalytics, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnChangeGrades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(43, Short.MAX_VALUE))
+		);
+		gl_rightBtnPanel.setVerticalGroup(
+			gl_rightBtnPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_rightBtnPanel.createSequentialGroup()
+					.addGap(36)
+					.addComponent(btnChangeGrades)
+					.addGap(18)
+					.addComponent(btnSummary)
+					.addGap(18)
+					.addComponent(btnExit)
+					.addPreferredGap(ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+					.addComponent(btnViewAnalytics)
+					.addGap(18)
+					.addComponent(btnHome)
+					.addGap(29))
+		);
 		
 		JPopupMenu popupMenu = new JPopupMenu();
 		popupMenu.setLabel("Grades Menu");
@@ -248,58 +279,17 @@ public class Home {
 		
 		JButton btnNewButton_5 = new JButton("Update Grade   ");
 		popupMenu.add(btnNewButton_5);
-		//Window is split into three different panels, the left, mid, and right panels. 
-		//Each panel has their one set of buttons and elements
-		//Each panel has their own layout manager, i used the Group Layout for each panel
+		rightBtnPanel.setLayout(gl_rightBtnPanel);
 		
-		//Group Layout groups each components that organize by their relative position from each other
-		//This one has all the buttons for left side 
-		GroupLayout gl_leftBtnPanel = new GroupLayout(leftBtnPanel);
-		
-		//creates a group of horizontally aligned components
-		gl_leftBtnPanel.setHorizontalGroup(
-			gl_leftBtnPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_leftBtnPanel.createSequentialGroup()
-					.addGap(38)
-					.addGroup(gl_leftBtnPanel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnHome, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnExit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnSummary, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnViewAnalytics, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnChangeGrades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap(43, Short.MAX_VALUE))
-		);
-		
-		//creates a group of vertically aligned components
-		gl_leftBtnPanel.setVerticalGroup(
-			gl_leftBtnPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_leftBtnPanel.createSequentialGroup()
-					.addGap(36)
-					.addComponent(btnChangeGrades)
-					.addGap(18)
-					.addComponent(btnSummary)
-					.addGap(18)
-					.addComponent(btnExit)
-					.addPreferredGap(ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-					.addComponent(btnViewAnalytics)
-					.addGap(18)
-					.addComponent(btnHome)
-					.addGap(29))
-		);
-		leftBtnPanel.setLayout(gl_leftBtnPanel);
-		
-		
-		//Initialization for middle panel buttons
 		JPanel midPanel = new JPanel();
 		panelMain.add(midPanel);
 		
+		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JList list1 = new JList();
 		
 		JButton btnNewButton = new JButton("Percentile");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
+			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		
@@ -307,80 +297,69 @@ public class Home {
 		
 		JButton btnNewButton_1 = new JButton("Percentage");
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
+			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		//This panel contains buttons and the list component that displays the list data
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GroupLayout gl_midPanel = new GroupLayout(midPanel);
-		
-		//creates a group of horizontally aligned components
 		gl_midPanel.setHorizontalGroup(
 			gl_midPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_midPanel.createSequentialGroup()
-					.addGroup(gl_midPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_midPanel.createSequentialGroup()
-							.addGap(41)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_midPanel.createSequentialGroup()
-							.addGap(22)
-							.addComponent(list1, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_midPanel.createSequentialGroup()
-							.addGap(33)
-							.addGroup(gl_midPanel.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnNewButton_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnViewLetterGrades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-					.addContainerGap(21, Short.MAX_VALUE))
+					.addGap(40)
+					.addGroup(gl_midPanel.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnViewLetterGrades, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(scrollPane, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addGroup(Alignment.LEADING, gl_midPanel.createSequentialGroup()
+							.addGap(8)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(35, Short.MAX_VALUE))
 		);
-		
-		//creates a group of vertically aligned components
 		gl_midPanel.setVerticalGroup(
 			gl_midPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_midPanel.createSequentialGroup()
-					.addGap(26)
+					.addGap(21)
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addGap(28)
-					.addComponent(list1, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+					.addGap(46)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+					.addGap(33)
 					.addComponent(btnNewButton)
 					.addGap(18)
 					.addComponent(btnNewButton_1)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(18)
 					.addComponent(btnViewLetterGrades)
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addContainerGap(29, Short.MAX_VALUE))
 		);
+		
+		JList list1 = new JList();
+		scrollPane.setViewportView(list1);
 		midPanel.setLayout(gl_midPanel);
 		
-		//Initialization for right panel buttons
-		JPanel rightPanel = new JPanel();
-		panelMain.add(rightPanel);
+		JPanel LeftPanel = new JPanel();
+		panelMain.add(LeftPanel);
 		
 		JButton btnNewButton_2 = new JButton("Refresh");
 		
 		JButton btnChangePercents = new JButton("Change Percents");
 		
 		JButton btnNext1 = new JButton("Next");
-		
-		//This panel contains buttons for the right panel
-		GroupLayout gl_rightBtnPanel = new GroupLayout(rightPanel);
-		gl_rightBtnPanel.setHorizontalGroup(
-				
-				//creates a group of horizontally aligned components
-			gl_rightBtnPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_rightBtnPanel.createSequentialGroup()
+		GroupLayout gl_LeftPanel = new GroupLayout(LeftPanel);
+		gl_LeftPanel.setHorizontalGroup(
+			gl_LeftPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_LeftPanel.createSequentialGroup()
 					.addContainerGap(42, Short.MAX_VALUE)
-					.addGroup(gl_rightBtnPanel.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_LeftPanel.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(btnNext1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnNewButton_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnChangePercents, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(37))
 		);
-		
-		//creates a group of vertically aligned components
-		gl_rightBtnPanel.setVerticalGroup(
-			gl_rightBtnPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_rightBtnPanel.createSequentialGroup()
+		gl_LeftPanel.setVerticalGroup(
+			gl_LeftPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_LeftPanel.createSequentialGroup()
 					.addGap(129)
 					.addComponent(btnNewButton_2)
 					.addGap(18)
@@ -389,9 +368,8 @@ public class Home {
 					.addComponent(btnNext1)
 					.addContainerGap(25, Short.MAX_VALUE))
 		);
-		rightPanel.setLayout(gl_rightBtnPanel);
-		
-		
+		LeftPanel.setLayout(gl_LeftPanel);
+
 		
 		
 		//Frame for Adding Grade Window
@@ -413,16 +391,20 @@ public class Home {
 
 		JLabel lblNewLabel_1 = new JLabel("Input Grade");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JButton btnBack2 = new JButton("Back");
 		GroupLayout gl_panel = new GroupLayout(addPanel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(145)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-						.addComponent(lblNewLabel1, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-						.addComponent(btnSubmit, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnBack2)
+					.addGap(46)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblNewLabel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(textField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(lblNewLabel1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
 					.addGap(160))
 		);
 		gl_panel.setVerticalGroup(
@@ -430,13 +412,15 @@ public class Home {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(27)
 					.addComponent(lblNewLabel1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addGap(36)
+					.addGap(92)
 					.addComponent(lblNewLabel_1)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(18)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(61)
-					.addComponent(btnSubmit)
-					.addContainerGap(41, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnSubmit)
+						.addComponent(btnBack2))
+					.addContainerGap())
 		);
 		addPanel.setLayout(gl_panel);
 		frmAdd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -454,7 +438,7 @@ public class Home {
 		
 		//needed to display float values on JList
 		model = new DefaultListModel<Float>();
-		JList<Float> list2 = new JList<Float>(model);
+		JList<Float> list2 = new JList<Float>((model));
 
 		JLabel removeLbl = new JLabel("Remove Grade");
 		removeLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -462,99 +446,115 @@ public class Home {
 
 		JLabel removeLbl1 = new JLabel("Choose Grade To Remove");
 		removeLbl1.setHorizontalAlignment(SwingConstants.CENTER);
-
+		
+		JScrollPane scrollPane2 = new JScrollPane();
+		scrollPane2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		JButton btnBack1 = new JButton("Back");
+		
 		//Connect this list to original list from main list
 		GroupLayout gl_removePanel = new GroupLayout(removePanel);
 		gl_removePanel.setHorizontalGroup(
 			gl_removePanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_removePanel.createSequentialGroup()
-					.addGap(145)
-					.addGroup(gl_removePanel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(list2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-						.addComponent(btnSubmit1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-						.addComponent(removeLbl1, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-						.addComponent(removeLbl, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE))
+				.addGroup(gl_removePanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnBack1)
+					.addGap(80)
+					.addGroup(gl_removePanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnSubmit1, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+						.addComponent(scrollPane2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+						.addComponent(removeLbl1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+						.addComponent(removeLbl, GroupLayout.PREFERRED_SIZE, 279, Short.MAX_VALUE))
 					.addGap(160))
 		);
 		gl_removePanel.setVerticalGroup(
-				gl_removePanel.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_removePanel.createSequentialGroup()
+			gl_removePanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_removePanel.createSequentialGroup()
 					.addGap(27)
 					.addComponent(removeLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addGap(36)
 					.addComponent(removeLbl1)
 					.addGap(18)
-					.addComponent(list2, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnSubmit1)
-					.addContainerGap(22, Short.MAX_VALUE))
+					.addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(74)
+					.addGroup(gl_removePanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnBack1)
+						.addComponent(btnSubmit1))
+					.addContainerGap())
 		);
+		
+		scrollPane2.setViewportView(list2);
 		removePanel.setLayout(gl_removePanel);
 		frmRemove.setBounds(100, 100, 600, 400);
-		frmRemove.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		frmRemove.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		
 		
 		
 		//Frame for the Change Grades Window
 		frmChange = new JFrame();
 		frmChange.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
-
+		
 		JPanel chgPanel = new JPanel();
 		frmChange.getContentPane().add(chgPanel);
 		
 		JButton btnSubmit2 = new JButton("Submit");
-
+		
 		JLabel chgLbl = new JLabel("Change Grade");
 		chgLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
 		chgLbl.setHorizontalAlignment(SwingConstants.CENTER);
-
+		
 		JLabel newValLbl1 = new JLabel("New Value");
 		newValLbl1.setHorizontalAlignment(SwingConstants.CENTER);
-
+		
+		JScrollPane scrollchgPane = new JScrollPane();
+		scrollchgPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		JButton btnBack = new JButton("Back");
+		
 		newValField = new JTextField();
 		newValField.setColumns(10);
-
-		JLabel delvalLbl = new JLabel("Delete Value");
-		delvalLbl.setHorizontalAlignment(SwingConstants.CENTER);
-
-		delValField = new JTextField();
-		delValField.setColumns(10);
-		GroupLayout gl_chgPanel1 = new GroupLayout(chgPanel);
-		gl_chgPanel1.setHorizontalGroup(
-			gl_chgPanel1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_chgPanel1.createSequentialGroup()
-					.addGap(145)
-					.addGroup(gl_chgPanel1.createParallelGroup(Alignment.LEADING)
-							.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
-									.addComponent(newValLbl1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-									.addGap(246))
-							.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
-							.addGroup(gl_chgPanel1.createParallelGroup(Alignment.TRAILING)
-									.addComponent(btnSubmit2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-									.addComponent(newValField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-									.addComponent(chgLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-									.addComponent(delValField, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-									.addComponent(delvalLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
-								.addGap(160))))
+		
+		JLabel lblDeleteValue = new JLabel("Delete Value");
+		lblDeleteValue.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_chgPanel = new GroupLayout(chgPanel);
+		gl_chgPanel.setHorizontalGroup(
+			gl_chgPanel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_chgPanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnBack)
+					.addGap(46)
+					.addGroup(gl_chgPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblDeleteValue, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(scrollchgPane, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(newValField, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(btnSubmit2, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(newValLbl1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+						.addComponent(chgLbl, GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+					.addGap(160))
 		);
-		gl_chgPanel1.setVerticalGroup(
-			gl_chgPanel1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_chgPanel1.createSequentialGroup()
+		gl_chgPanel.setVerticalGroup(
+			gl_chgPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_chgPanel.createSequentialGroup()
 					.addGap(27)
 					.addComponent(chgLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addGap(36)
 					.addComponent(newValLbl1)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(newValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(75)
-					.addComponent(delvalLbl)
+					.addGap(34)
+					.addComponent(lblDeleteValue)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(delValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-					.addComponent(btnSubmit2)
+					.addComponent(scrollchgPane, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+					.addGroup(gl_chgPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnSubmit2)
+						.addComponent(btnBack))
 					.addContainerGap())
 		);
-		chgPanel.setLayout(gl_chgPanel1);
+		
+		JList list3 = new JList();
+		scrollchgPane.setViewportView(list3);
+		chgPanel.setLayout(gl_chgPanel);
 		frmChange.setBounds(100, 100, 600, 400);
 		frmChange.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -591,7 +591,7 @@ public class Home {
 				float tempToAdd = Float.parseFloat(textField.getText());
 				list.add(tempToAdd);
 				gaFile.setList(list);
-				System.out.print(list);
+				System.out.println(list);
 				
 				frmMain.setVisible(true);
 				frmAdd.setVisible(false);	
@@ -601,8 +601,10 @@ public class Home {
 		btnSubmit1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				int indexOfTempToRemove = list2.getSelectedIndex();
-				list.remove(indexOfTempToRemove);
-				gaFile.setList(list);
+				float tempToDel = list2.getSelectedValue();
+				gaFile.deleteGrade(tempToDel);
+				list = gaFile.getList();
+				System.out.println(list);
 				
 				frmMain.setVisible(true);
 				frmRemove.setVisible(false);
@@ -617,17 +619,13 @@ public class Home {
 				
 				gaFile.replaceGrade(tempToDel, tempToAdd);
 				list = gaFile.getList();
+				System.out.println(list);
 				
 				frmMain.setVisible(true);
 				frmChange.setVisible(false);
 				
 			}
 		});
-		
-			
-		
-		
-		
 		
 	}
 	
