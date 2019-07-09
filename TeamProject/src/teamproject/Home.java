@@ -288,6 +288,13 @@ public class Home {
 		//I took this out for a reason don't put it back plz JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		//Functionality for 'Exit' button
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		
 		JButton btnNewButton = new JButton("Percentile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
