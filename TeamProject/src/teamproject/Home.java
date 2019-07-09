@@ -30,6 +30,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ListModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.awt.Component;
 
@@ -165,11 +166,17 @@ public class Home {
 		      public void actionPerformed(ActionEvent ae) {
 		    	  JFileChooser fileChooser = new JFileChooser();
 		    	  
+		    	  
+		    	  
 		    	  //I personally am trying to figure out how this works. This was partially pulled from
 		    	  //an example "approve_option" I believe is making it so an error doesn't occur 
 			      int returnValue = fileChooser.showOpenDialog(null);
 			      if (returnValue == JFileChooser.APPROVE_OPTION) {
 			    	  selectedFile = fileChooser.getSelectedFile();
+			    	  
+			
+			    	  
+			    	
 			    	  
 			    	  panel.removeAll();
 			    	  
@@ -181,6 +188,11 @@ public class Home {
 			    	  
 			    	  panel.repaint();
 			      }
+			      
+			   
+			      
+			      
+			    	//  JOptionPane.showMessageDialog(panel, "Invalid File", "Error", JOptionPane.ERROR_MESSAGE);
 		      }
 		});
 		
@@ -659,31 +671,17 @@ public class Home {
 		//Functionality for 'Exit' button
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int confirmed = JOptionPane.showConfirmDialog(btnExit, "Are You Sure?");
+				
+				if (confirmed == JOptionPane.YES_OPTION) {
 				System.exit(0);
+				}
 			}
 		});
 		
 		
 		
 		
-	}
-	
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 		
 }
