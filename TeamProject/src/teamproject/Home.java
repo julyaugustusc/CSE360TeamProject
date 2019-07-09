@@ -56,7 +56,15 @@ public class Home {
 	
 	private JLabel lblNewLabel = new JLabel("NewManualInput"); 
 	
+	JTextField highPPoss = new JTextField();
+	JTextField lowPPoss = new JTextField();
+	JTextField highEarned = new JTextField();
+	JTextField lowEarned = new JTextField();
+	JTextField average = new JTextField();
+	JTextField median = new JTextField();
+	
 	private DefaultListModel<Float> model;
+	private DefaultListModel<Float> model1;
 
 	/**
 	 * Launch the application.
@@ -207,7 +215,15 @@ public class Home {
 			    	list = data.getFloatFileList();
 			    	gaFile = new GradeAnalytics(list, minPoss, maxPoss);
 			    	
-			    	lblNewLabel.setText(selectedFile.getName());
+			    	lblNewLabel.setText("File: " + selectedFile.getName());
+			    	
+			    	highPPoss.setText("" + maxPoss);
+			    	lowPPoss.setText("" + minPoss);
+			    	highEarned.setText("" + gaFile.getMaxScore());
+			    	lowEarned.setText("" + gaFile.getMinScore());
+			    	average.setText("" + gaFile.getAverage());
+			    	median.setText("" + gaFile.getMedian());
+			    	
 				}
 				
 				window.frmHome.setVisible(false);
@@ -223,152 +239,114 @@ public class Home {
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panelMain = new JPanel();
-		frmMain.getContentPane().add(panelMain, BorderLayout.CENTER);
-		panelMain.setLayout(new GridLayout(0, 3, 0, 0));
+		frmMain.getContentPane().add(panelMain);
+		panelMain.setLayout(null);
 		
-		JPanel rightBtnPanel = new JPanel();
-		panelMain.add(rightBtnPanel);
-		
-		JButton btnChangeGrades = new JButton("Change Grades");
-		
+		//basic screen
+		JButton btnHome = new JButton("Home");
+		JButton btnNewButton_3 = new JButton("Add a Grade");
+		JButton btnNewButton_4 = new JButton("Remove a Grade");
+		JButton btnNewButton_5 = new JButton("Change a Grade");
+		JButton btnViewAnalytics = new JButton("View Analytics");
+		JButton btnViewLetterGrades = new JButton("View Letter Grades");
+		JButton btnNewButton = new JButton("Percentile");
+		JButton btnNewButton_1 = new JButton("Percentage");
 		JButton btnSummary = new JButton("Display Summary");
-		
 		JButton btnExit = new JButton("Exit");
 		
-		JButton btnViewAnalytics = new JButton("View Analytics");
+		btnHome.setBounds(20, 20, 150, 25);
+		panelMain.add(btnHome);
 		
-		JButton btnHome = new JButton("Home");
-		GroupLayout gl_rightBtnPanel = new GroupLayout(rightBtnPanel);
-		gl_rightBtnPanel.setHorizontalGroup(
-			gl_rightBtnPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_rightBtnPanel.createSequentialGroup()
-					.addGap(38)
-					.addGroup(gl_rightBtnPanel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnHome, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnExit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnSummary, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnViewAnalytics, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnChangeGrades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap(43, Short.MAX_VALUE))
-		);
-		gl_rightBtnPanel.setVerticalGroup(
-			gl_rightBtnPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_rightBtnPanel.createSequentialGroup()
-					.addGap(36)
-					.addComponent(btnChangeGrades)
-					.addGap(18)
-					.addComponent(btnSummary)
-					.addGap(18)
-					.addComponent(btnExit)
-					.addPreferredGap(ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-					.addComponent(btnViewAnalytics)
-					.addGap(18)
-					.addComponent(btnHome)
-					.addGap(29))
-		);
+		btnNewButton_3.setBounds(20, 55, 150, 25);
+		panelMain.add(btnNewButton_3);
 		
-		JPopupMenu popupMenu = new JPopupMenu();
-		popupMenu.setLabel("Grades Menu");
-		addPopup(btnChangeGrades, popupMenu);
+		btnNewButton_4.setBounds(20, 90, 150, 25);
+		panelMain.add(btnNewButton_4);
 		
-		JButton btnNewButton_3 = new JButton("Add Grades       ");
-		popupMenu.add(btnNewButton_3);
+		btnNewButton_5.setBounds(20, 125, 150, 25);
+		panelMain.add(btnNewButton_5);
 		
-		JButton btnNewButton_4 = new JButton("Remove Grade  ");
-		popupMenu.add(btnNewButton_4);
+		btnViewAnalytics.setBounds(20, 160, 150, 25);
+		panelMain.add(btnViewAnalytics);
 		
-		JButton btnNewButton_5 = new JButton("Update Grade   ");
-		popupMenu.add(btnNewButton_5);
-		rightBtnPanel.setLayout(gl_rightBtnPanel);
+		btnViewLetterGrades.setBounds(20, 195, 150, 25);
+		panelMain.add(btnViewLetterGrades);
 		
-		JPanel midPanel = new JPanel();
-		panelMain.add(midPanel);
+		btnNewButton.setBounds(20, 230, 150, 25);
+		panelMain.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		btnNewButton_1.setBounds(20, 265, 150, 25);
+		panelMain.add(btnNewButton_1);
+			
+		btnSummary.setBounds(20, 300, 150, 25);
+		panelMain.add(btnSummary);
 		
-		JButton btnNewButton = new JButton("Percentile");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnExit.setBounds(20, 335, 150, 25);
+		panelMain.add(btnExit);
 		
-		JButton btnViewLetterGrades = new JButton("View Letter Grades");
+		lblNewLabel.setBounds(300, 10, 150, 50);
+		panelMain.add(lblNewLabel);
 		
-		JButton btnNewButton_1 = new JButton("Percentage");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		GroupLayout gl_midPanel = new GroupLayout(midPanel);
-		gl_midPanel.setHorizontalGroup(
-			gl_midPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_midPanel.createSequentialGroup()
-					.addGap(40)
-					.addGroup(gl_midPanel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnNewButton_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnViewLetterGrades, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-						.addComponent(scrollPane, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-						.addGroup(Alignment.LEADING, gl_midPanel.createSequentialGroup()
-							.addGap(8)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(35, Short.MAX_VALUE))
-		);
-		gl_midPanel.setVerticalGroup(
-			gl_midPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_midPanel.createSequentialGroup()
-					.addGap(21)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addGap(46)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-					.addGap(33)
-					.addComponent(btnNewButton)
-					.addGap(18)
-					.addComponent(btnNewButton_1)
-					.addGap(18)
-					.addComponent(btnViewLetterGrades)
-					.addContainerGap(29, Short.MAX_VALUE))
-		);
+		//More on the analytics screen
+		JLabel highPPossString = new JLabel("Highest Points Possible:");
+		JLabel lowPPossString = new JLabel("Lowest Points Possible:");
+		JLabel highEarnedString = new JLabel("Highest Points Earned:");
+		JLabel lowEarnedString = new JLabel("Lowest Points Earned:");
+		JLabel averageString = new JLabel("Average Value:");
+		JLabel medianString = new JLabel("Median Value:");
 		
-		JList list1 = new JList();
-		scrollPane.setViewportView(list1);
-		midPanel.setLayout(gl_midPanel);
+		//JTEXT are global variables (above) in order to change
+    	highPPoss.setEditable(false);
+    	lowPPoss.setEditable(false);
+    	highEarned.setEditable(false);
+    	lowEarned.setEditable(false);
+    	average.setEditable(false);
+    	median.setEditable(false);
 		
-		JPanel LeftPanel = new JPanel();
-		panelMain.add(LeftPanel);
+		//Labels
+		highPPossString.setBounds(250, 80, 200, 25);
+		panelMain.add(highPPossString);
 		
-		JButton btnNewButton_2 = new JButton("Refresh");
+		lowPPossString.setBounds(250, 120, 200, 25);
+		panelMain.add(lowPPossString);
 		
-		JButton btnChangePercents = new JButton("Change Percents");
+		highEarnedString.setBounds(250, 160, 200, 25);
+		panelMain.add(highEarnedString);
 		
-		JButton btnNext1 = new JButton("Next");
-		GroupLayout gl_LeftPanel = new GroupLayout(LeftPanel);
-		gl_LeftPanel.setHorizontalGroup(
-			gl_LeftPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_LeftPanel.createSequentialGroup()
-					.addContainerGap(42, Short.MAX_VALUE)
-					.addGroup(gl_LeftPanel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(btnNext1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnNewButton_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnChangePercents, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(37))
-		);
-		gl_LeftPanel.setVerticalGroup(
-			gl_LeftPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_LeftPanel.createSequentialGroup()
-					.addGap(129)
-					.addComponent(btnNewButton_2)
-					.addGap(18)
-					.addComponent(btnChangePercents)
-					.addGap(120)
-					.addComponent(btnNext1)
-					.addContainerGap(25, Short.MAX_VALUE))
-		);
-		LeftPanel.setLayout(gl_LeftPanel);
+		lowEarnedString.setBounds(250, 200, 200, 25);
+		panelMain.add(lowEarnedString);
+		
+		averageString.setBounds(250, 240, 200, 25);
+		panelMain.add(averageString);
+		
+		medianString.setBounds(250, 280, 200, 25);
+		panelMain.add(medianString);
+		
+		
+		//Values
+		highPPoss.setBounds(425, 80, 60, 25);
+		panelMain.add(highPPoss);
+		
+		lowPPoss.setBounds(425, 120, 60, 25);
+		panelMain.add(lowPPoss);
+		
+		highEarned.setBounds(425, 160, 60, 25);
+		panelMain.add(highEarned);
+		
+		lowEarned.setBounds(425, 200, 60, 25);
+		panelMain.add(lowEarned);
+		
+		average.setBounds(425, 240, 60, 25);
+		panelMain.add(average);
+		
+		median.setBounds(425, 280, 60, 25);
+		panelMain.add(median);
+		
+		
+		
+		
+
 
 		
 		
@@ -552,16 +530,23 @@ public class Home {
 					.addContainerGap())
 		);
 		
-		JList list3 = new JList();
+		//needed to display float values on JList
+		model1 = new DefaultListModel<Float>();
+		JList<Float> list3 = new JList<Float>((model1));
+		
 		scrollchgPane.setViewportView(list3);
 		chgPanel.setLayout(gl_chgPanel);
 		frmChange.setBounds(100, 100, 600, 400);
 		frmChange.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//ActionLISTENERS for add/remove/change grades
 		
+		//ActionLISTENERS START HERE
+		
+		//Add/remove/change buttons
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				textField.setText("");
+				
 				frmMain.setVisible(false);
 				frmAdd.setVisible(true);
 			}
@@ -573,14 +558,24 @@ public class Home {
 				frmRemove.setVisible(true);
 				
 				model.clear();
-				for (int i = 0; i < list.size(); i++) {
-					model.add(i,list.get(i));
+				if (list != null) {
+					for (int i = 0; i < list.size(); i++) {
+						model.add(i,list.get(i));
+					}
 				}
 			}
 		});
 		
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				newValField.setText("");
+				
+				model1.clear();
+				if (list != null) {
+					for (int i = 0; i < list.size(); i++) {
+						model1.add(i,list.get(i));
+					}
+				}
 				frmMain.setVisible(false);
 				frmChange.setVisible(true);
 			}
@@ -600,7 +595,6 @@ public class Home {
 		
 		btnSubmit1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				int indexOfTempToRemove = list2.getSelectedIndex();
 				float tempToDel = list2.getSelectedValue();
 				gaFile.deleteGrade(tempToDel);
 				list = gaFile.getList();
@@ -615,7 +609,7 @@ public class Home {
 		btnSubmit2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				float tempToAdd = Float.parseFloat(newValField.getText());
-				float tempToDel = Float.parseFloat(delValField.getText());
+				float tempToDel = list3.getSelectedValue();
 				
 				gaFile.replaceGrade(tempToDel, tempToAdd);
 				list = gaFile.getList();
@@ -626,6 +620,51 @@ public class Home {
 				
 			}
 		});
+		
+		btnBack2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(true);
+				frmAdd.setVisible(false);
+			}
+		});
+		
+		btnBack1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(true);
+				frmRemove.setVisible(false);
+			}
+		});
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(true);
+				frmChange.setVisible(false);
+			}
+		});
+		
+		//Analysis screen
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		
+		
+		//Functionality for 'Exit' button
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		
+		
+		
 		
 	}
 	
