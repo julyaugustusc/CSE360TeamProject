@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -24,6 +25,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ListModel;
 import javax.swing.SwingConstants;
 
 import java.awt.Component;
@@ -51,7 +53,7 @@ public class Home {
 	
 	private JLabel lblNewLabel = new JLabel("NewManualInput"); 
 	
-	private JButton btnSubmit = new JButton("Submit");
+	private DefaultListModel<Float> model;
 
 	/**
 	 * Launch the application.
@@ -93,10 +95,9 @@ public class Home {
 	private void initialize() {
 		
 		/*JOptionPane optionPane = new JOptionPane(
-			    "Are You Sure?\n",
-			    JOptionPane.QUESTION_MESSAGE,
-			    JOptionPane.YES_NO_OPTION);*/
-		
+	    "Are You Sure?\n",
+	    JOptionPane.QUESTION_MESSAGE,
+	    JOptionPane.YES_NO_OPTION);*/
 		
 		//Frame For Home Screen
 		frmHome = new JFrame();
@@ -104,8 +105,6 @@ public class Home {
 		frmHome.setBounds(100, 100, 600, 400);
 		frmHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHome.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
-		
-		
 		
 		//JOptionPane.showMessageDialog(frmHome, "Invalid File.");
 		//JOptionPane.showMessageDialog(frmHome, "Cannot Find File.");
@@ -296,7 +295,7 @@ public class Home {
 		
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JList list = new JList();
+		JList list1 = new JList();
 		
 		JButton btnNewButton = new JButton("Percentile");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -325,7 +324,7 @@ public class Home {
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_midPanel.createSequentialGroup()
 							.addGap(22)
-							.addComponent(list, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE))
+							.addComponent(list1, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_midPanel.createSequentialGroup()
 							.addGap(33)
 							.addGroup(gl_midPanel.createParallelGroup(Alignment.TRAILING, false)
@@ -342,7 +341,7 @@ public class Home {
 					.addGap(26)
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addGap(28)
-					.addComponent(list, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
+					.addComponent(list1, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(btnNewButton)
 					.addGap(18)
@@ -405,6 +404,8 @@ public class Home {
 
 		textField = new JTextField();
 		textField.setColumns(10);
+		
+		JButton btnSubmit = new JButton("Submit");
 
 		JLabel lblNewLabel1 = new JLabel("Add Grades");
 		lblNewLabel1.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -448,6 +449,12 @@ public class Home {
 
 		JPanel removePanel = new JPanel();
 		frmRemove.getContentPane().add(removePanel);
+		
+		JButton btnSubmit1 = new JButton("Submit");
+		
+		//needed to display float values on JList
+		model = new DefaultListModel<Float>();
+		JList<Float> list2 = new JList<Float>(model);
 
 		JLabel removeLbl = new JLabel("Remove Grade");
 		removeLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -463,35 +470,39 @@ public class Home {
 				.addGroup(Alignment.TRAILING, gl_removePanel.createSequentialGroup()
 					.addGap(145)
 					.addGroup(gl_removePanel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(list, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-						.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(list2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(btnSubmit1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
 						.addComponent(removeLbl1, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
 						.addComponent(removeLbl, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE))
 					.addGap(160))
 		);
 		gl_removePanel.setVerticalGroup(
-			gl_removePanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_removePanel.createSequentialGroup()
+				gl_removePanel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_removePanel.createSequentialGroup()
 					.addGap(27)
 					.addComponent(removeLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addGap(36)
 					.addComponent(removeLbl1)
 					.addGap(18)
-					.addComponent(list, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+					.addComponent(list2, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(btnSubmit)
+					.addComponent(btnSubmit1)
 					.addContainerGap(22, Short.MAX_VALUE))
 		);
 		removePanel.setLayout(gl_removePanel);
 		frmRemove.setBounds(100, 100, 600, 400);
 		frmRemove.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		
+		
 		//Frame for the Change Grades Window
 		frmChange = new JFrame();
 		frmChange.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 
 		JPanel chgPanel = new JPanel();
 		frmChange.getContentPane().add(chgPanel);
+		
+		JButton btnSubmit2 = new JButton("Submit");
 
 		JLabel chgLbl = new JLabel("Change Grade");
 		chgLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -514,17 +525,17 @@ public class Home {
 				.addGroup(gl_chgPanel1.createSequentialGroup()
 					.addGap(145)
 					.addGroup(gl_chgPanel1.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
-							.addComponent(newValLbl1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-							.addGap(246))
-						.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
+							.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
+									.addComponent(newValLbl1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+									.addGap(246))
+							.addGroup(Alignment.TRAILING, gl_chgPanel1.createSequentialGroup()
 							.addGroup(gl_chgPanel1.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnSubmit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-								.addComponent(newValField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-								.addComponent(chgLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-								.addComponent(delValField, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-								.addComponent(delvalLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
-							.addGap(160))))
+									.addComponent(btnSubmit2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+									.addComponent(newValField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+									.addComponent(chgLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+									.addComponent(delValField, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+									.addComponent(delvalLbl, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+								.addGap(160))))
 		);
 		gl_chgPanel1.setVerticalGroup(
 			gl_chgPanel1.createParallelGroup(Alignment.LEADING)
@@ -540,7 +551,7 @@ public class Home {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(delValField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-					.addComponent(btnSubmit)
+					.addComponent(btnSubmit2)
 					.addContainerGap())
 		);
 		chgPanel.setLayout(gl_chgPanel1);
@@ -560,6 +571,11 @@ public class Home {
 			public void actionPerformed(ActionEvent ae) {
 				frmMain.setVisible(false);
 				frmRemove.setVisible(true);
+				
+				model.clear();
+				for (int i = 0; i < list.size(); i++) {
+					model.add(i,list.get(i));
+				}
 			}
 		});
 		
@@ -572,24 +588,41 @@ public class Home {
 		
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				//TODO Process all screens
-				if (frmAdd.isVisible()) {
-					
-				} else if (frmRemove.isVisible()) {
-					
-				} else {
-					
-				}
-				
+				float tempToAdd = Float.parseFloat(textField.getText());
+				list.add(tempToAdd);
+				gaFile.setList(list);
+				System.out.print(list);
 				
 				frmMain.setVisible(true);
-				frmAdd.setVisible(false);
+				frmAdd.setVisible(false);	
+			}
+		});
+		
+		btnSubmit1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				int indexOfTempToRemove = list2.getSelectedIndex();
+				list.remove(indexOfTempToRemove);
+				gaFile.setList(list);
+				
+				frmMain.setVisible(true);
 				frmRemove.setVisible(false);
+		
+			}
+		});
+		
+		btnSubmit2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				float tempToAdd = Float.parseFloat(newValField.getText());
+				float tempToDel = Float.parseFloat(delValField.getText());
+				
+				gaFile.replaceGrade(tempToDel, tempToAdd);
+				list = gaFile.getList();
+				
+				frmMain.setVisible(true);
 				frmChange.setVisible(false);
 				
 			}
 		});
-		
 		
 			
 		
