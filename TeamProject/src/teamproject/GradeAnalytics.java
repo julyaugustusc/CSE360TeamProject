@@ -91,6 +91,7 @@ public class GradeAnalytics {
 		this.list = list;
 		this.minPoss = minPoss;
 		this.maxPoss = maxPoss;
+		refresh();
 	}
 	
 	public void setList(ArrayList<Float> list) {
@@ -99,6 +100,19 @@ public class GradeAnalytics {
 	
 	public ArrayList<Float> getList() {
 		return list;
+	}
+	
+	public void refresh() {
+		setMaxScore();
+		setMinScore();
+		setAverage();
+		//setMedian();
+		
+		determineGrades();
+		determineTop();
+		distributionMaxPoss();
+		distributionMaxValue();
+	
 	}
 	
 	/** Determines max score received 
@@ -119,7 +133,7 @@ public class GradeAnalytics {
 	public void setMinScore() {
 		minValue = list.get(0);
 		for(indexOfList = 0; indexOfList < list.size(); indexOfList++) {
-			if(minValue < list.get(indexOfList)) {
+			if(minValue > list.get(indexOfList)) {
 				minValue = list.get(indexOfList);
 			}
 		}
@@ -129,8 +143,9 @@ public class GradeAnalytics {
 	 * 
 	 */
 	public void setAverage() {
+		totalForAve = 0;
 		for(indexOfList = 0; indexOfList < list.size(); indexOfList++) {
-			totalForAve =+ list.get(indexOfList);
+			totalForAve = totalForAve + list.get(indexOfList);
 		}
 		averageValue = totalForAve / list.size();
 	}
@@ -143,13 +158,14 @@ public class GradeAnalytics {
 	 * valuable to have orderedList.
 	 * 
 	 */
+	//NOT WORKING PROPERLY AT THIS POINT 
 	public void setMedian() {
 		orderedList.add(list.get(0));
 		
 		for(indexOfList = 1; indexOfList < list.size(); indexOfList++) {
 			indexOfOrderedList = 0;
 			
-			while (orderedList.get(indexOfOrderedList) != null || 
+			while (orderedList.get(indexOfOrderedList) != null && 
 					list.get(indexOfList) < orderedList.get(indexOfOrderedList)) {
 				indexOfOrderedList++;
 			}
@@ -316,6 +332,7 @@ public class GradeAnalytics {
 	 */
 	public void addGrade(float addedGrade) {
 		list.add(addedGrade);
+		refresh();
 	}
 	
 	/**Finds FIRST grade in list if exists, if not say DNE
@@ -333,6 +350,7 @@ public class GradeAnalytics {
 			System.out.println("Value not in List!");
 			//Change probably
 		}
+		refresh();
 	}
 	
 	/**Replaces first found deletedGrade with newGrade, if DNE outputs DNE
@@ -351,6 +369,7 @@ public class GradeAnalytics {
 			System.out.println("Value not in List!");
 			//Change probably
 		}
+		refresh();
 	}
 	
 	/** Determines distribution as a result of MaxPoss
