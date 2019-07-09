@@ -586,8 +586,10 @@ public class Home {
 				frmRemove.setVisible(true);
 				
 				model.clear();
-				for (int i = 0; i < list.size(); i++) {
-					model.add(i,list.get(i));
+				if (list != null) {
+					for (int i = 0; i < list.size(); i++) {
+						model.add(i,list.get(i));
+					}
 				}
 			}
 		});
@@ -597,10 +599,11 @@ public class Home {
 				newValField.setText("");
 				
 				model1.clear();
-				for (int i = 0; i < list.size(); i++) {
-					model1.add(i,list.get(i));
+				if (list != null) {
+					for (int i = 0; i < list.size(); i++) {
+						model1.add(i,list.get(i));
+					}
 				}
-				
 				frmMain.setVisible(false);
 				frmChange.setVisible(true);
 			}
