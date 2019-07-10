@@ -33,6 +33,10 @@ import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.awt.Component;
+import java.awt.Rectangle;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.Color;
 
 public class Home {
 	
@@ -86,6 +90,7 @@ public class Home {
 					window.frmAdd.setVisible(false);
 					window.frmRemove.setVisible(false);
 					window.frmChange.setVisible(false);
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -261,106 +266,230 @@ public class Home {
 		frmMain.getContentPane().add(panelMain);
 		panelMain.setLayout(null);
 		
+		JPanel percentilePanel = new JPanel();
+		percentilePanel.setBounds(250, 80, 234, 225);
+		panelMain.add(percentilePanel);
+		
+		
+		//Panel for View Letter Grades
+		JPanel gradePanel = new JPanel();
+		gradePanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), 
+		"Letter Grades", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		gradePanel.setBounds(250, 80, 234, 225);
+		panelMain.add(gradePanel);
+		gradePanel.setLayout(null);
+		
+		JLabel gradeA = new JLabel("A:");
+		gradeA.setFont(new Font("Tahoma", Font.BOLD, 20));
+		gradeA.setBounds(new Rectangle(65, 15, 35, 35));
+		gradePanel.add(gradeA);
+		
+		JLabel gradeB = new JLabel("B:");
+		gradeB.setFont(new Font("Tahoma", Font.BOLD, 20));
+		gradeB.setBounds(new Rectangle(10, 21, 27, 14));
+		gradeB.setBounds(65, 50, 35, 35);
+		gradePanel.add(gradeB);
+		
+		JLabel gradeC = new JLabel("C:");
+		gradeC.setFont(new Font("Tahoma", Font.BOLD, 20));
+		gradeC.setBounds(new Rectangle(10, 21, 27, 14));
+		gradeC.setBounds(65, 85, 35, 35);
+		gradePanel.add(gradeC);
+		
+		JLabel gradeD = new JLabel("D:");
+		gradeD.setFont(new Font("Tahoma", Font.BOLD, 20));
+		gradeD.setBounds(new Rectangle(10, 21, 27, 14));
+		gradeD.setBounds(65, 120, 35, 35);
+		gradePanel.add(gradeD);
+		
+		JLabel gradeE = new JLabel("E:");
+		gradeE.setFont(new Font("Tahoma", Font.BOLD, 20));
+		gradeE.setBounds(new Rectangle(10, 21, 27, 14));
+		gradeE.setBounds(65, 155, 35, 35);
+		gradePanel.add(gradeE);
+		
+		JTextField gradeValueA = new JTextField("0");
+		gradeValueA.setFont(new Font("Tahoma", Font.BOLD, 15));
+		gradeValueA.setBounds(155, 23, 30, 20);
+		gradePanel.add(gradeValueA);
+		
+		JTextField gradeValueB = new JTextField("0");
+		gradeValueB.setFont(new Font("Tahoma", Font.BOLD, 15));
+		gradeValueB.setBounds(155, 58, 30, 20);
+		gradePanel.add(gradeValueB);
+		
+		JTextField gradeValueC = new JTextField("0");
+		gradeValueC.setFont(new Font("Tahoma", Font.BOLD, 15));
+		gradeValueC.setBounds(155, 93, 30, 20);
+		gradePanel.add(gradeValueC);
+		
+		JTextField gradeValueD = new JTextField("0");
+		gradeValueD.setFont(new Font("Tahoma", Font.BOLD, 15));
+		gradeValueD.setBounds(155, 128, 30, 20);
+		gradePanel.add(gradeValueD);
+		
+		JTextField gradeValueE = new JTextField("0");
+		gradeValueE.setFont(new Font("Tahoma", Font.BOLD, 15));
+		gradeValueE.setBounds(155, 163, 30, 20);
+		gradePanel.add(gradeValueE);
+		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBounds(20, 10, 150, 340);
+		panelMain.add(buttonPanel);
+		buttonPanel.setLayout(null);
+		
+		
+		
+		
 		//basic screen
 		JButton btnHome = new JButton("Home");
+		btnHome.setBounds(0, 0, 150, 25);
+		buttonPanel.add(btnHome);
 		JButton btnNewButton_3 = new JButton("Add a Grade");
+		btnNewButton_3.setBounds(0, 35, 150, 25);
+		buttonPanel.add(btnNewButton_3);
 		JButton btnNewButton_4 = new JButton("Remove a Grade");
+		btnNewButton_4.setBounds(0, 70, 150, 25);
+		buttonPanel.add(btnNewButton_4);
 		JButton btnNewButton_5 = new JButton("Change a Grade");
+		btnNewButton_5.setBounds(0, 105, 150, 25);
+		buttonPanel.add(btnNewButton_5);
 		JButton btnViewAnalytics = new JButton("View Analytics");
+		btnViewAnalytics.setBounds(0, 140, 150, 25);
+		buttonPanel.add(btnViewAnalytics);
 		JButton btnViewLetterGrades = new JButton("View Letter Grades");
+		btnViewLetterGrades.setBounds(0, 175, 150, 25);
+		buttonPanel.add(btnViewLetterGrades);
 		JButton btnNewButton = new JButton("Percentile");
+		btnNewButton.setBounds(0, 210, 150, 25);
+		buttonPanel.add(btnNewButton);
 		JButton btnNewButton_1 = new JButton("Percentage");
+		btnNewButton_1.setBounds(0, 245, 150, 25);
+		buttonPanel.add(btnNewButton_1);
 		JButton btnSummary = new JButton("Display Summary");
+		btnSummary.setBounds(0, 280, 150, 25);
+		buttonPanel.add(btnSummary);
 		JButton btnExit = new JButton("Exit");
+		btnExit.setBounds(0, 315, 150, 25);
+		buttonPanel.add(btnExit);
 		
-		btnHome.setBounds(20, 20, 150, 25);
-		panelMain.add(btnHome);
 		
-		btnNewButton_3.setBounds(20, 55, 150, 25);
-		panelMain.add(btnNewButton_3);
 		
-		btnNewButton_4.setBounds(20, 90, 150, 25);
-		panelMain.add(btnNewButton_4);
+		//Functionality for 'Exit' button
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int confirmed = JOptionPane.showConfirmDialog(btnExit, "Are You Sure?");
+				
+				if (confirmed == JOptionPane.YES_OPTION) {
+				System.exit(0);
+				}
+			}
+		});
 		
-		btnNewButton_5.setBounds(20, 125, 150, 25);
-		panelMain.add(btnNewButton_5);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
-		btnViewAnalytics.setBounds(20, 160, 150, 25);
-		panelMain.add(btnViewAnalytics);
+		//Analysis screen
 		
-		btnViewLetterGrades.setBounds(20, 195, 150, 25);
-		panelMain.add(btnViewLetterGrades);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		
-		btnNewButton.setBounds(20, 230, 150, 25);
-		panelMain.add(btnNewButton);
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				newValField.setText("");
+				
+				model1.clear();
+				if (list != null) {
+					for (int i = 0; i < list.size(); i++) {
+						model1.add(i,list.get(i));
+					}
+				}
+				frmMain.setVisible(false);
+				frmChange.setVisible(true);
+			}
+		});
 		
-		btnNewButton_1.setBounds(20, 265, 150, 25);
-		panelMain.add(btnNewButton_1);
-			
-		btnSummary.setBounds(20, 300, 150, 25);
-		panelMain.add(btnSummary);
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				frmMain.setVisible(false);
+				frmRemove.setVisible(true);
+				
+				model.clear();
+				if (list != null) {
+					for (int i = 0; i < list.size(); i++) {
+						model.add(i,list.get(i));
+					}
+				}
+			}
+		});
 		
-		btnExit.setBounds(20, 335, 150, 25);
-		panelMain.add(btnExit);
 		
-		lblNewLabel.setBounds(300, 10, 150, 50);
-		panelMain.add(lblNewLabel);
+		//ActionLISTENERS START HERE
+		
+		//Add/remove/change buttons
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				textField.setText("");
+				
+				frmMain.setVisible(false);
+				frmAdd.setVisible(true);
+			}
+		});
+		
+		JPanel analysisPanel = new JPanel();
+		analysisPanel.setBounds(250, 80, 235, 225);
+		panelMain.add(analysisPanel);
+		analysisPanel.setLayout(null);
+		
+		analysisPanel.setVisible(false);
 		
 		
 		//More on the analytics screen
 		JLabel highPPossString = new JLabel("Highest Points Possible:");
+		highPPossString.setBounds(0, 0, 200, 25);
+		analysisPanel.add(highPPossString);
 		JLabel lowPPossString = new JLabel("Lowest Points Possible:");
+		lowPPossString.setBounds(0, 40, 200, 25);
+		analysisPanel.add(lowPPossString);
 		JLabel highEarnedString = new JLabel("Highest Points Earned:");
+		highEarnedString.setBounds(0, 80, 200, 25);
+		analysisPanel.add(highEarnedString);
 		JLabel lowEarnedString = new JLabel("Lowest Points Earned:");
+		lowEarnedString.setBounds(0, 120, 200, 25);
+		analysisPanel.add(lowEarnedString);
 		JLabel averageString = new JLabel("Average Value:");
+		averageString.setBounds(0, 160, 200, 25);
+		analysisPanel.add(averageString);
 		JLabel medianString = new JLabel("Median Value:");
+		medianString.setBounds(0, 200, 200, 25);
+		analysisPanel.add(medianString);
+		highPPoss.setBounds(175, 0, 60, 25);
+		analysisPanel.add(highPPoss);
 		
 		//JTEXT are global variables (above) in order to change
     	highPPoss.setEditable(false);
+    	lowPPoss.setBounds(175, 40, 60, 25);
+    	analysisPanel.add(lowPPoss);
     	lowPPoss.setEditable(false);
+    	highEarned.setBounds(175, 80, 60, 25);
+    	analysisPanel.add(highEarned);
     	highEarned.setEditable(false);
+    	lowEarned.setBounds(175, 120, 60, 25);
+    	analysisPanel.add(lowEarned);
     	lowEarned.setEditable(false);
+    	average.setBounds(175, 160, 60, 25);
+    	analysisPanel.add(average);
     	average.setEditable(false);
+    	median.setBounds(175, 200, 60, 25);
+    	analysisPanel.add(median);
     	median.setEditable(false);
 		
-		//Labels
-		highPPossString.setBounds(250, 80, 200, 25);
-		panelMain.add(highPPossString);
-		
-		lowPPossString.setBounds(250, 120, 200, 25);
-		panelMain.add(lowPPossString);
-		
-		highEarnedString.setBounds(250, 160, 200, 25);
-		panelMain.add(highEarnedString);
-		
-		lowEarnedString.setBounds(250, 200, 200, 25);
-		panelMain.add(lowEarnedString);
-		
-		averageString.setBounds(250, 240, 200, 25);
-		panelMain.add(averageString);
-		
-		medianString.setBounds(250, 280, 200, 25);
-		panelMain.add(medianString);
-		
-		
-		//Values
-		highPPoss.setBounds(425, 80, 60, 25);
-		panelMain.add(highPPoss);
-		
-		lowPPoss.setBounds(425, 120, 60, 25);
-		panelMain.add(lowPPoss);
-		
-		highEarned.setBounds(425, 160, 60, 25);
-		panelMain.add(highEarned);
-		
-		lowEarned.setBounds(425, 200, 60, 25);
-		panelMain.add(lowEarned);
-		
-		average.setBounds(425, 240, 60, 25);
-		panelMain.add(average);
-		
-		median.setBounds(425, 280, 60, 25);
-		panelMain.add(median);
+		lblNewLabel.setBounds(300, 10, 150, 50);
+		panelMain.add(lblNewLabel);
 		
 		
 		
@@ -558,48 +687,6 @@ public class Home {
 		frmChange.setBounds(100, 100, 600, 400);
 		frmChange.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		
-		//ActionLISTENERS START HERE
-		
-		//Add/remove/change buttons
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				textField.setText("");
-				
-				frmMain.setVisible(false);
-				frmAdd.setVisible(true);
-			}
-		});
-		
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				frmMain.setVisible(false);
-				frmRemove.setVisible(true);
-				
-				model.clear();
-				if (list != null) {
-					for (int i = 0; i < list.size(); i++) {
-						model.add(i,list.get(i));
-					}
-				}
-			}
-		});
-		
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				newValField.setText("");
-				
-				model1.clear();
-				if (list != null) {
-					for (int i = 0; i < list.size(); i++) {
-						model1.add(i,list.get(i));
-					}
-				}
-				frmMain.setVisible(false);
-				frmChange.setVisible(true);
-			}
-		});
-		
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				if (textField.getText().isEmpty()) {
@@ -684,34 +771,8 @@ public class Home {
 			}
 		});
 		
-		//Analysis screen
-		
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		
-		
-		//Functionality for 'Exit' button
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				int confirmed = JOptionPane.showConfirmDialog(btnExit, "Are You Sure?");
-				
-				if (confirmed == JOptionPane.YES_OPTION) {
-				System.exit(0);
-				}
-			}
-		});
-		
 		
 		
 		
 	}
-		
 }
