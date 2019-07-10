@@ -373,6 +373,27 @@ public class Home {
 		median.setBounds(425, 280, 60, 25);
 		panelMain.add(median);
 		
+		//Have Home Screen be clear
+		highPPoss.setVisible(false);
+    	lowPPoss.setVisible(false);
+    	highEarned.setVisible(false);
+    	lowEarned.setVisible(false);
+    	average.setVisible(false);
+    	median.setVisible(false);
+
+		highPPossString.setVisible(false);
+    	lowPPossString.setVisible(false);
+    	highEarnedString.setVisible(false);
+    	lowEarnedString.setVisible(false);
+    	averageString.setVisible(false);
+    	medianString.setVisible(false);
+		
+    	//A nice title
+    	JLabel homeName = new JLabel("Grade Analytica");
+		homeName.setFont(new Font("BOLD", Font.ITALIC, 40));
+		homeName.setBounds(225, 135, 300, 100);
+		panelMain.add(homeName);
+    	
 		//To rename buttons
 		
 		JLabel newFileNameString = new JLabel("Enter new name:");
@@ -798,6 +819,7 @@ public class Home {
 			public void actionPerformed(ActionEvent ae) {
 				textField.setText("");
 				
+				homeName.setVisible(true);
 				frmMain.setVisible(false);
 				frmAdd.setVisible(true);
 			}
@@ -806,6 +828,7 @@ public class Home {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				frmMain.setVisible(false);
+				homeName.setVisible(false);
 				frmRemove.setVisible(true);
 				
 				model.clear();
@@ -827,6 +850,7 @@ public class Home {
 						model1.add(i,list.get(i));
 					}
 				}
+				homeName.setVisible(false);
 				frmMain.setVisible(false);
 				frmChange.setVisible(true);
 			}
@@ -850,6 +874,7 @@ public class Home {
 					average.setText("" + gaFile.getAverage());
 					median.setText("" + gaFile.getMedian());
 				
+					homeName.setVisible(true);
 					frmMain.setVisible(true);
 					frmAdd.setVisible(false);
 				}
@@ -871,7 +896,8 @@ public class Home {
 					lowEarned.setText("" + gaFile.getMinScore());
 					average.setText("" + gaFile.getAverage());
 					median.setText("" + gaFile.getMedian());
-				
+					
+					homeName.setVisible(true);
 					frmMain.setVisible(true);
 					frmRemove.setVisible(false);
 				} else {
@@ -899,7 +925,8 @@ public class Home {
 					lowEarned.setText("" + gaFile.getMinScore());
 					average.setText("" + gaFile.getAverage());
 					median.setText("" + gaFile.getMedian());
-				
+					
+					homeName.setVisible(true);
 					frmMain.setVisible(true);
 					frmChange.setVisible(false);
 				}
@@ -909,22 +936,166 @@ public class Home {
 		
 		btnBack2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				frmMain.setVisible(true);
+				highPPoss.setVisible(false);
+		    	lowPPoss.setVisible(false);
+		    	highEarned.setVisible(false);
+		    	lowEarned.setVisible(false);
+		    	average.setVisible(false);
+		    	median.setVisible(false);
+
+				highPPossString.setVisible(false);
+		    	lowPPossString.setVisible(false);
+		    	highEarnedString.setVisible(false);
+		    	lowEarnedString.setVisible(false);
+		    	averageString.setVisible(false);
+		    	medianString.setVisible(false);
+
+		    	btnRename.setVisible(false);
+
+		    	newFileNameString.setVisible(true);
+		    	newFileNameString.setVisible(false);
+				newFileName.setVisible(false);
+				continueName.setVisible(false);
+				
+				distr0.setVisible(false);
+				distr10.setVisible(false);
+				distr20.setVisible(false);
+				distr30.setVisible(false);
+				distr40.setVisible(false);
+				distr50.setVisible(false);
+				distr60.setVisible(false);
+				distr70.setVisible(false);
+				distr80.setVisible(false);
+				distr90.setVisible(false);
+				distr100.setVisible(false);
+				
+				distr0String.setVisible(false);
+				distr10String.setVisible(false);
+				distr20String.setVisible(false);
+				distr30String.setVisible(false);
+				distr40String.setVisible(false);
+				distr50String.setVisible(false);
+				distr60String.setVisible(false);
+				distr70String.setVisible(false);
+				distr80String.setVisible(false);
+				distr90String.setVisible(false);
+				distr100String.setVisible(false);
+				summaryPanel.setVisible(false);
+				
 				frmAdd.setVisible(false);
+				homeName.setVisible(true);
+				frmMain.setVisible(true);
+				
 			}
 		});
 		
 		btnBack1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				frmMain.setVisible(true);
+				highPPoss.setVisible(false);
+		    	lowPPoss.setVisible(false);
+		    	highEarned.setVisible(false);
+		    	lowEarned.setVisible(false);
+		    	average.setVisible(false);
+		    	median.setVisible(false);
+
+				highPPossString.setVisible(false);
+		    	lowPPossString.setVisible(false);
+		    	highEarnedString.setVisible(false);
+		    	lowEarnedString.setVisible(false);
+		    	averageString.setVisible(false);
+		    	medianString.setVisible(false);
+
+		    	btnRename.setVisible(false);
+
+		    	newFileNameString.setVisible(true);
+		    	newFileNameString.setVisible(false);
+				newFileName.setVisible(false);
+				continueName.setVisible(false);
+				
+				distr0.setVisible(false);
+				distr10.setVisible(false);
+				distr20.setVisible(false);
+				distr30.setVisible(false);
+				distr40.setVisible(false);
+				distr50.setVisible(false);
+				distr60.setVisible(false);
+				distr70.setVisible(false);
+				distr80.setVisible(false);
+				distr90.setVisible(false);
+				distr100.setVisible(false);
+				
+				distr0String.setVisible(false);
+				distr10String.setVisible(false);
+				distr20String.setVisible(false);
+				distr30String.setVisible(false);
+				distr40String.setVisible(false);
+				distr50String.setVisible(false);
+				distr60String.setVisible(false);
+				distr70String.setVisible(false);
+				distr80String.setVisible(false);
+				distr90String.setVisible(false);
+				distr100String.setVisible(false);
+				summaryPanel.setVisible(false);
+				
 				frmRemove.setVisible(false);
+				homeName.setVisible(true);
+				frmMain.setVisible(true);
+				
 			}
 		});
 		
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				frmMain.setVisible(true);
+				highPPoss.setVisible(false);
+		    	lowPPoss.setVisible(false);
+		    	highEarned.setVisible(false);
+		    	lowEarned.setVisible(false);
+		    	average.setVisible(false);
+		    	median.setVisible(false);
+
+				highPPossString.setVisible(false);
+		    	lowPPossString.setVisible(false);
+		    	highEarnedString.setVisible(false);
+		    	lowEarnedString.setVisible(false);
+		    	averageString.setVisible(false);
+		    	medianString.setVisible(false);
+
+		    	btnRename.setVisible(false);
+
+		    	newFileNameString.setVisible(true);
+		    	newFileNameString.setVisible(false);
+				newFileName.setVisible(false);
+				continueName.setVisible(false);
+				
+				distr0.setVisible(false);
+				distr10.setVisible(false);
+				distr20.setVisible(false);
+				distr30.setVisible(false);
+				distr40.setVisible(false);
+				distr50.setVisible(false);
+				distr60.setVisible(false);
+				distr70.setVisible(false);
+				distr80.setVisible(false);
+				distr90.setVisible(false);
+				distr100.setVisible(false);
+				
+				distr0String.setVisible(false);
+				distr10String.setVisible(false);
+				distr20String.setVisible(false);
+				distr30String.setVisible(false);
+				distr40String.setVisible(false);
+				distr50String.setVisible(false);
+				distr60String.setVisible(false);
+				distr70String.setVisible(false);
+				distr80String.setVisible(false);
+				distr90String.setVisible(false);
+				distr100String.setVisible(false);
+				summaryPanel.setVisible(false);
+				
 				frmChange.setVisible(false);
+				homeName.setVisible(true);
+				frmMain.setVisible(true);
+				
 			}
 		});
 		
@@ -942,6 +1113,7 @@ public class Home {
 				
 				panel.repaint();
 				
+				homeName.setVisible(false);
 				frmMain.setVisible(false);
 				frmHome.setVisible(true);
 			}
@@ -1127,6 +1299,7 @@ public class Home {
 				distr90String.setVisible(false);
 				distr100String.setVisible(false);
 				
+				homeName.setVisible(false);
 				summaryPanel.setVisible(false);
 			}
 		});
@@ -1191,6 +1364,7 @@ public class Home {
 				distr90String.setVisible(false);
 				distr100String.setVisible(false);
 				
+				homeName.setVisible(false);
 				summaryPanel.setVisible(false);
 				
 				gaFile.refresh();
@@ -1477,6 +1651,7 @@ public class Home {
 		    	medianString.setVisible(false);
 		    	
 		    	btnRename.setVisible(false);
+		    	homeName.setVisible(false);
 		    	
 		    	newFileNameString.setVisible(false);
 				newFileName.setVisible(false);
@@ -1596,6 +1771,7 @@ public class Home {
 				sumList.addElement("      80% Percentile: " + gaFile.getValues(2));
 				sumList.addElement("      90% Percentile: " + gaFile.getValues(1));
 				sumList.addElement("     100% Percentile: " + maxPoss);
+				homeName.setVisible(false);
 				
 				JList<String> sum = new JList<String>(sumList);
 				summaryPanel.setViewportView(sum);
