@@ -217,13 +217,14 @@ public class Home {
 		btnNext2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				
+				if ((minPossText == null || maxPossText == null) || (minPossText == null && maxPossText == null) ) {
+					JOptionPane.showMessageDialog(panel, "Must Enter Values", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				
 				//string to Float, but need error catcher later
 				maxPoss = Float.parseFloat(maxPossText.getText());
 				minPoss = Float.parseFloat(minPossText.getText());	
 				
-				if (minPoss > 0 || maxPoss > 0) {
-					JOptionPane.showMessageDialog(panel, "Invalid Bounds", "Error", JOptionPane.ERROR_MESSAGE);
-				}
 					
 				if(selectedFile == null) {
 					gaFile = new GradeAnalytics(minPoss, maxPoss);
@@ -601,18 +602,30 @@ public class Home {
 		
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				if (textField.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(panel, "You Must Input A Value!", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+					
+				else {
 				float tempToAdd = Float.parseFloat(textField.getText());
+				
 				list.add(tempToAdd);
 				gaFile.setList(list);
 				System.out.println(list);
 				
 				frmMain.setVisible(true);
 				frmAdd.setVisible(false);	
+				}
 			}
-		});
+			
+	});
 		
 		btnSubmit1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				if (list2.getSelectedValue() == null) {
+					JOptionPane.showMessageDialog(panel, "You Must Select A Value!", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+				else {
 				float tempToDel = list2.getSelectedValue();
 				gaFile.deleteGrade(tempToDel);
 				list = gaFile.getList();
@@ -622,10 +635,20 @@ public class Home {
 				frmRemove.setVisible(false);
 		
 			}
-		});
+		}
+	});
 		
 		btnSubmit2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				
+			if (newValField.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(panel, "You Must Input A Value!", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			else if (list3.getSelectedValue() == null) {
+				JOptionPane.showMessageDialog(panel, "You Must Select A Value!", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+				
+			else {
 				float tempToAdd = Float.parseFloat(newValField.getText());
 				float tempToDel = list3.getSelectedValue();
 				
@@ -637,7 +660,8 @@ public class Home {
 				frmChange.setVisible(false);
 				
 			}
-		});
+		}
+	});
 		
 		btnBack2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
