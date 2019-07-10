@@ -70,6 +70,16 @@ public class Home {
 	
 	private DefaultListModel<Float> model;
 	private DefaultListModel<Float> model1;
+	private JTextField perDisA;
+	private JTextField perDisB;
+	private JTextField perDisC;
+	private JTextField perDisD;
+	private JTextField perDisE;
+	private JTextField pdDisA;
+	private JTextField pdDisB;
+	private JTextField pdDisC;
+	private JTextField pdDisD;
+	private JTextField pdDisE;
 
 	/**
 	 * Launch the application.
@@ -266,9 +276,68 @@ public class Home {
 		frmMain.getContentPane().add(panelMain);
 		panelMain.setLayout(null);
 		
-		JPanel percentilePanel = new JPanel();
-		percentilePanel.setBounds(250, 80, 234, 225);
-		panelMain.add(percentilePanel);
+		
+		//Panel for Percent Dis w/ High/Low
+		JPanel highLowPanel = new JPanel();
+		highLowPanel.setBounds(250, 80, 234, 225);
+		panelMain.add(highLowPanel);
+		highLowPanel.setLayout(null);
+		highLowPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Percent Distributions (High/Low)", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		
+		JLabel pdgradeA = new JLabel("A:");
+		pdgradeA.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pdgradeA.setBounds(new Rectangle(65, 15, 21, 25));
+		pdgradeA.setBounds(65, 15, 21, 25);
+		highLowPanel.add(pdgradeA);
+		
+		JLabel pdgradeB = new JLabel("B:");
+		pdgradeB.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pdgradeB.setBounds(new Rectangle(65, 50, 21, 25));
+		pdgradeB.setBounds(65, 50, 21, 25);
+		highLowPanel.add(pdgradeB);
+		
+		JLabel pdgradeC = new JLabel("C:");
+		pdgradeC.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pdgradeC.setBounds(new Rectangle(65, 85, 20, 25));
+		pdgradeC.setBounds(65, 85, 20, 25);
+		highLowPanel.add(pdgradeC);
+		
+		JLabel pdgradeD = new JLabel("D:");
+		pdgradeD.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pdgradeD.setBounds(new Rectangle(65, 120, 22, 25));
+		pdgradeD.setBounds(65, 120, 22, 25);
+		highLowPanel.add(pdgradeD);
+		
+		JLabel pdgradeE = new JLabel("E:");
+		pdgradeE.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pdgradeE.setBounds(new Rectangle(65, 155, 19, 25));
+		pdgradeE.setBounds(65, 155, 19, 25);
+		highLowPanel.add(pdgradeE);
+		
+		pdDisA = new JTextField("0");
+		pdDisA.setFont(new Font("Tahoma", Font.BOLD, 15));
+		pdDisA.setBounds(155, 19, 60, 20);
+		highLowPanel.add(pdDisA);
+		
+		pdDisB = new JTextField("0");
+		pdDisB.setFont(new Font("Tahoma", Font.BOLD, 15));
+		pdDisB.setBounds(155, 54, 60, 20);
+		highLowPanel.add(pdDisB);
+		
+		pdDisC = new JTextField("0");
+		pdDisC.setFont(new Font("Tahoma", Font.BOLD, 15));
+		pdDisC.setBounds(155, 89, 60, 20);
+		highLowPanel.add(pdDisC);
+		
+		pdDisD = new JTextField("0");
+		pdDisD.setFont(new Font("Tahoma", Font.BOLD, 15));
+		pdDisD.setBounds(155, 124, 60, 20);
+		highLowPanel.add(pdDisD);
+		
+		pdDisE = new JTextField("0");
+		pdDisE.setFont(new Font("Tahoma", Font.BOLD, 15));
+		pdDisE.setBounds(155, 159, 60, 20);
+		highLowPanel.add(pdDisE);
 		
 		
 		//Panel for View Letter Grades
@@ -332,6 +401,64 @@ public class Home {
 		gradeValueE.setFont(new Font("Tahoma", Font.BOLD, 15));
 		gradeValueE.setBounds(155, 163, 30, 20);
 		gradePanel.add(gradeValueE);
+		
+		
+		//Panel for Normal Percentile Dis
+		JPanel percentilePanel = new JPanel();
+		percentilePanel.setBorder(new TitledBorder(null, "Percentile Distrbutions", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		percentilePanel.setBounds(250, 80, 234, 225);
+		panelMain.add(percentilePanel);
+		percentilePanel.setLayout(null);
+		
+		JLabel pgradeA = new JLabel("A:");
+		pgradeA.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pgradeA.setBounds(new Rectangle(65, 15, 21, 25));
+		percentilePanel.add(pgradeA);
+		
+		JLabel pgradeB = new JLabel("B:");
+		pgradeB.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pgradeB.setBounds(new Rectangle(65, 50, 21, 25));
+		percentilePanel.add(pgradeB);
+		
+		JLabel pgradeC = new JLabel("C:");
+		pgradeC.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pgradeC.setBounds(new Rectangle(65, 85, 20, 25));
+		percentilePanel.add(pgradeC);
+		
+		JLabel pgradeD = new JLabel("D:");
+		pgradeD.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pgradeD.setBounds(new Rectangle(65, 120, 22, 25));
+		percentilePanel.add(pgradeD);
+		
+		JLabel pgradeE = new JLabel("E:");
+		pgradeE.setFont(new Font("Tahoma", Font.BOLD, 20));
+		pgradeE.setBounds(new Rectangle(65, 155, 19, 25));
+		percentilePanel.add(pgradeE);
+		
+		perDisA = new JTextField("0");
+		perDisA.setFont(new Font("Tahoma", Font.BOLD, 15));
+		perDisA.setBounds(155, 19, 30, 20);
+		percentilePanel.add(perDisA);
+		
+		perDisB = new JTextField("0");
+		perDisB.setFont(new Font("Tahoma", Font.BOLD, 15));
+		perDisB.setBounds(155, 54, 30, 20);
+		percentilePanel.add(perDisB);
+		
+		perDisC = new JTextField("0");
+		perDisC.setFont(new Font("Tahoma", Font.BOLD, 15));
+		perDisC.setBounds(155, 89, 30, 20);
+		percentilePanel.add(perDisC);
+		
+		perDisD = new JTextField("0");
+		perDisD.setFont(new Font("Tahoma", Font.BOLD, 15));
+		perDisD.setBounds(155, 124, 30, 20);
+		percentilePanel.add(perDisD);
+		
+		perDisE = new JTextField("0");
+		perDisE.setFont(new Font("Tahoma", Font.BOLD, 15));
+		perDisE.setBounds(155, 159, 30, 20);
+		percentilePanel.add(perDisE);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(20, 10, 150, 340);
