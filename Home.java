@@ -56,7 +56,7 @@ public class Home {
 	private JTextField newValField;
 	private JTextField delValField;
 	
-	private JLabel lblNewLabel = new JLabel("New_Manual_Input"); 
+	private JLabel lblNewLabel = new JLabel("File: New_Manual_Input.txt"); 
 	
 	JTextField highPPoss = new JTextField();
 	JTextField lowPPoss = new JTextField();
@@ -67,6 +67,7 @@ public class Home {
 	
 	private DefaultListModel<Float> model;
 	private DefaultListModel<Float> model1;
+	private DefaultListModel<String> sumList;
 
 	/**
 	 * Launch the application.
@@ -273,8 +274,8 @@ public class Home {
 		JButton btnNewButton_5 = new JButton("Change a Grade");
 		JButton btnViewAnalytics = new JButton("View Analytics");
 		JButton btnViewLetterGrades = new JButton("View Letter Grades");
-		JButton btnNewButton = new JButton("Percentile");
-		JButton btnNewButton_1 = new JButton("Percentage");
+		JButton btnNewButton = new JButton("Percentile Scores");
+		JButton btnNewButton_1 = new JButton("Percentile Max/Min");
 		JButton btnSummary = new JButton("Display Summary");
 		JButton btnExit = new JButton("Exit");
 		
@@ -500,6 +501,98 @@ public class Home {
 		cutOffCString.setVisible(false);
 		cutOffDString.setVisible(false);
 		
+		JLabel distr0String = new JLabel("0% Percentile:");
+		JLabel distr10String = new JLabel("10% Percentile:");
+		JLabel distr20String = new JLabel("20% Percentile:");
+		JLabel distr30String = new JLabel("30% Percentile:");
+		JLabel distr40String = new JLabel("40% Percentile:");
+		JLabel distr50String = new JLabel("50% Percentile:");
+		JLabel distr60String = new JLabel("60% Percentile:");
+		JLabel distr70String = new JLabel("70% Percentile:");
+		JLabel distr80String = new JLabel("80% Percentile:");
+		JLabel distr90String = new JLabel("90% Percentile:");
+		JLabel distr100String = new JLabel("100%  Percentile:");
+		
+		JTextField distr0 = new JTextField();
+		JTextField distr10 = new JTextField();
+		JTextField distr20 = new JTextField();
+		JTextField distr30 = new JTextField();
+		JTextField distr40 = new JTextField();
+		JTextField distr50 = new JTextField();
+		JTextField distr60 = new JTextField();
+		JTextField distr70 = new JTextField();
+		JTextField distr80 = new JTextField();
+		JTextField distr90 = new JTextField();
+		JTextField distr100 = new JTextField();
+		
+		//Code for Summary Display
+		JScrollPane summaryPanel = new JScrollPane();
+		summaryPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		summaryPanel.setBounds(250, 80, 300, 250);
+		sumList = new DefaultListModel<String>();
+		sumList.addElement(" Minimum Possible:");
+		sumList.addElement(" Maximum Possible:");
+		sumList.addElement(" Minimum Received:");
+		sumList.addElement(" Maximum Received:");
+		sumList.addElement(" Average Value:");
+		sumList.addElement(" Median Value:");
+		sumList.addElement("Grades:");
+		sumList.addElement("      Number of A's:");
+		sumList.addElement("      Number of B's:");
+		sumList.addElement("      Number of C's:");
+		sumList.addElement("      Number of D's:");
+		sumList.addElement("      Number of E's:");
+		sumList.addElement("Distribution based on Maximum Possible:");
+		sumList.addElement("      0% Percentile:");
+		sumList.addElement("      10% Percentile:");
+		sumList.addElement("      20% Percentile:");
+		sumList.addElement("      30% Percentile:");
+		sumList.addElement("      40% Percentile:");
+		sumList.addElement("      50% Percentile:");
+		sumList.addElement("      60% Percentile:");
+		sumList.addElement("      70% Percentile:");
+		sumList.addElement("      80% Percentile:");
+		sumList.addElement("      90% Percentile:");
+		sumList.addElement("     100% Percentile:");
+		sumList.addElement("Distribution based on Actual Max/Min Value:");
+		sumList.addElement("      0% Percentile:");
+		sumList.addElement("      10% Percentile:");
+		sumList.addElement("      20% Percentile:");
+		sumList.addElement("      30% Percentile:");
+		sumList.addElement("      40% Percentile:");
+		sumList.addElement("      50% Percentile:");
+		sumList.addElement("      60% Percentile:");
+		sumList.addElement("      70% Percentile:");
+		sumList.addElement("      80% Percentile:");
+		sumList.addElement("      90% Percentile:");
+		sumList.addElement("     100% Percentile:");
+
+		JList<String> sum = new JList<String>(sumList);
+		summaryPanel.setViewportView(sum);
+		summaryPanel.setVisible(false);
+		panelMain.add(summaryPanel);
+
+
+				/*
+				 * "Summary of Statistics:" 
+
+						+ "\nNumber of As " + asCutOff + " - 100%: " + numberOfAs
+						+ "\nNumber of Bs " + bsCutOff + "% - " + topOfBs + "%: " + numberOfBs
+						+ "\nNumber of Cs " + csCutOff + "% - " + topOfCs + "%: " + numberOfCs
+						+ "\nNumber of Ds " + dsCutOff + "% - " + topOfDs + "%: " + numberOfDs
+						+ "\nNumber of Es " + "0.0% - " + topOfEs + "%: " + numberOfEs
+						+ "\n\nDistribution based on Maximum Possible: "
+						+ "\nFirst 10%: " + numberOf0sP + "\tSecond 10%: " + numberOf10sP + "\tThird 10%: " + numberOf20sP
+						+ "\tFourth 10%: " + numberOf30sP + "\tFifth 10%: " + numberOf40sP
+						+ "\nSixth 10%: " + numberOf50sP + "\tSeventh 10%: " + numberOf60sP + "\tEight 10%: " + numberOf70sP
+						+ "\tNinth 10%: " + numberOf80sP + "\tLast 10%: " + numberOf90sP
+						+ "\n\nDistribution based on Maximum Value: "
+						+ "\nFirst 10%: " + numberOf0sV + "\tSecond 10%: " + numberOf10sV + "\tThird 10%: " + numberOf20sV
+						+ "\tFourth 10%: " + numberOf30sV + "\tFifth 10%: " + numberOf40sV
+						+ "\nSixth 10%: " + numberOf50sV + "\tSeventh 10%: " + numberOf60sV + "\tEight 10%: " + numberOf70sV
+						+ "\tNinth 10%: " + numberOf80sV + "\tLast 10%: " + numberOf90sV;
+				 */
+
 
 		
 		
@@ -900,6 +993,32 @@ public class Home {
 				newFileNameString.setVisible(true);
 				newFileName.setVisible(true);
 				continueName.setVisible(true);
+				
+				distr0.setVisible(false);
+				distr10.setVisible(false);
+				distr20.setVisible(false);
+				distr30.setVisible(false);
+				distr40.setVisible(false);
+				distr50.setVisible(false);
+				distr60.setVisible(false);
+				distr70.setVisible(false);
+				distr80.setVisible(false);
+				distr90.setVisible(false);
+				distr100.setVisible(false);
+				
+				distr0String.setVisible(false);
+				distr10String.setVisible(false);
+				distr20String.setVisible(false);
+				distr30String.setVisible(false);
+				distr40String.setVisible(false);
+				distr50String.setVisible(false);
+				distr60String.setVisible(false);
+				distr70String.setVisible(false);
+				distr80String.setVisible(false);
+				distr90String.setVisible(false);
+				distr100String.setVisible(false);
+				
+				summaryPanel.setVisible(false);
 			}
 		});
 		
@@ -931,6 +1050,8 @@ public class Home {
 					newFileNameString.setVisible(false);
 					newFileName.setVisible(false);
 					continueName.setVisible(false);
+					
+					summaryPanel.setVisible(false);
 				}
 			}
 		});
@@ -982,6 +1103,32 @@ public class Home {
 		    	newFileNameString.setVisible(false);
 				newFileName.setVisible(false);
 				continueName.setVisible(false);
+				
+				distr0.setVisible(false);
+				distr10.setVisible(false);
+				distr20.setVisible(false);
+				distr30.setVisible(false);
+				distr40.setVisible(false);
+				distr50.setVisible(false);
+				distr60.setVisible(false);
+				distr70.setVisible(false);
+				distr80.setVisible(false);
+				distr90.setVisible(false);
+				distr100.setVisible(false);
+				
+				distr0String.setVisible(false);
+				distr10String.setVisible(false);
+				distr20String.setVisible(false);
+				distr30String.setVisible(false);
+				distr40String.setVisible(false);
+				distr50String.setVisible(false);
+				distr60String.setVisible(false);
+				distr70String.setVisible(false);
+				distr80String.setVisible(false);
+				distr90String.setVisible(false);
+				distr100String.setVisible(false);
+				
+				summaryPanel.setVisible(false);
 			}
 		});
 		
@@ -1020,6 +1167,32 @@ public class Home {
 		    	newFileNameString.setVisible(false);
 				newFileName.setVisible(false);
 				continueName.setVisible(false);
+				
+				distr0.setVisible(false);
+				distr10.setVisible(false);
+				distr20.setVisible(false);
+				distr30.setVisible(false);
+				distr40.setVisible(false);
+				distr50.setVisible(false);
+				distr60.setVisible(false);
+				distr70.setVisible(false);
+				distr80.setVisible(false);
+				distr90.setVisible(false);
+				distr100.setVisible(false);
+				
+				distr0String.setVisible(false);
+				distr10String.setVisible(false);
+				distr20String.setVisible(false);
+				distr30String.setVisible(false);
+				distr40String.setVisible(false);
+				distr50String.setVisible(false);
+				distr60String.setVisible(false);
+				distr70String.setVisible(false);
+				distr80String.setVisible(false);
+				distr90String.setVisible(false);
+				distr100String.setVisible(false);
+				
+				summaryPanel.setVisible(false);
 				
 				gaFile.refresh();
 				
@@ -1078,15 +1251,315 @@ public class Home {
 		
 
 		
+		distr0String.setBounds(250, 60, 150, 25);
+		panelMain.add(distr0String);
+		distr10String.setBounds(250, 85, 150, 25);
+		panelMain.add(distr10String);
+		distr20String.setBounds(250, 110, 150, 25);
+		panelMain.add(distr20String);
+		distr30String.setBounds(250, 135, 150, 25);
+		panelMain.add(distr30String);
+		distr40String.setBounds(250, 160, 150, 25);
+		panelMain.add(distr40String);
+		distr50String.setBounds(250, 185, 150, 25);
+		panelMain.add(distr50String);
+		distr60String.setBounds(250, 210, 150, 25);
+		panelMain.add(distr60String);
+		distr70String.setBounds(250, 235, 150, 25);
+		panelMain.add(distr70String);
+		distr80String.setBounds(250, 260, 150, 25);
+		panelMain.add(distr80String);
+		distr90String.setBounds(250, 285, 150, 25);
+		panelMain.add(distr90String);
+		distr100String.setBounds(250, 310, 150, 25);
+		panelMain.add(distr100String);
+		
+		distr0.setBounds(425, 60, 60, 25);
+		panelMain.add(distr0);
+		distr10.setBounds(425, 85, 60, 25);
+		panelMain.add(distr10);
+		distr20.setBounds(425, 110, 60, 25);
+		panelMain.add(distr20);
+		distr30.setBounds(425, 135, 60, 25);
+		panelMain.add(distr30);
+		distr40.setBounds(425, 160, 60, 25);
+		panelMain.add(distr40);
+		distr50.setBounds(425, 185, 60, 25);
+		panelMain.add(distr50);
+		distr60.setBounds(425, 210, 60, 25);
+		panelMain.add(distr60);
+		distr70.setBounds(425, 235, 60, 25);
+		panelMain.add(distr70);
+		distr80.setBounds(425, 260, 60, 25);
+		panelMain.add(distr80);
+		distr90.setBounds(425, 285, 60, 25);
+		panelMain.add(distr90);
+		distr100.setBounds(425, 310, 60, 25);
+		panelMain.add(distr100);
+		
+		distr0.setEditable(false);
+		distr10.setEditable(false);
+		distr20.setEditable(false);
+		distr30.setEditable(false);
+		distr40.setEditable(false);
+		distr50.setEditable(false);
+		distr60.setEditable(false);
+		distr70.setEditable(false);
+		distr80.setEditable(false);
+		distr90.setEditable(false);
+		distr100.setEditable(false);
+		
+		distr0.setVisible(false);
+		distr10.setVisible(false);
+		distr20.setVisible(false);
+		distr30.setVisible(false);
+		distr40.setVisible(false);
+		distr50.setVisible(false);
+		distr60.setVisible(false);
+		distr70.setVisible(false);
+		distr80.setVisible(false);
+		distr90.setVisible(false);
+		distr100.setVisible(false);
+		
+		distr0String.setVisible(false);
+		distr10String.setVisible(false);
+		distr20String.setVisible(false);
+		distr30String.setVisible(false);
+		distr40String.setVisible(false);
+		distr50String.setVisible(false);
+		distr60String.setVisible(false);
+		distr70String.setVisible(false);
+		distr80String.setVisible(false);
+		distr90String.setVisible(false);
+		distr100String.setVisible(false);
+		
 		
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				gaFile.refresh();
+				
+				distr0.setText("" + gaFile.getValues(10));
+				distr10.setText("" + gaFile.getValues(9));
+				distr20.setText("" + gaFile.getValues(8));
+				distr30.setText("" + gaFile.getValues(7));
+				distr40.setText("" + gaFile.getValues(6));
+				distr50.setText("" + gaFile.getValues(5));
+				distr60.setText("" + gaFile.getValues(4));
+				distr70.setText("" + gaFile.getValues(3));
+				distr80.setText("" + gaFile.getValues(2));
+				distr90.setText("" + gaFile.getValues(1));
+				distr100.setText("" + gaFile.getValues(0));
+				
+				gradeAString.setVisible(false);
+				gradeBString.setVisible(false);
+				gradeCString.setVisible(false);
+				gradeDString.setVisible(false);
+				gradeEString.setVisible(false);
+				
+				gradeA.setVisible(false);
+				gradeB.setVisible(false);
+				gradeC.setVisible(false);
+				gradeD.setVisible(false);
+				gradeE.setVisible(false);
+				
+				setGradeCutOff.setVisible(false);
+				
+				cutOffA.setVisible(false);
+				cutOffB.setVisible(false);
+				cutOffC.setVisible(false);
+				cutOffD.setVisible(false);
+				
+				cutOffAString.setVisible(false);
+				cutOffBString.setVisible(false);
+				cutOffCString.setVisible(false);
+				cutOffDString.setVisible(false);
+				
+				highPPoss.setVisible(false);
+		    	lowPPoss.setVisible(false);
+		    	highEarned.setVisible(false);
+		    	lowEarned.setVisible(false);
+		    	average.setVisible(false);
+		    	median.setVisible(false);
+		    	
+				highPPossString.setVisible(false);
+		    	lowPPossString.setVisible(false);
+		    	highEarnedString.setVisible(false);
+		    	lowEarnedString.setVisible(false);
+		    	averageString.setVisible(false);
+		    	medianString.setVisible(false);
+		    	
+		    	btnRename.setVisible(false);
+		    	
+		    	newFileNameString.setVisible(false);
+				newFileName.setVisible(false);
+				continueName.setVisible(false);
+				
+				distr0.setVisible(true);
+				distr10.setVisible(true);
+				distr20.setVisible(true);
+				distr30.setVisible(true);
+				distr40.setVisible(true);
+				distr50.setVisible(true);
+				distr60.setVisible(true);
+				distr70.setVisible(true);
+				distr80.setVisible(true);
+				distr90.setVisible(true);
+				distr100.setVisible(true);
+				
+				distr0String.setVisible(true);
+				distr10String.setVisible(true);
+				distr20String.setVisible(true);
+				distr30String.setVisible(true);
+				distr40String.setVisible(true);
+				distr50String.setVisible(true);
+				distr60String.setVisible(true);
+				distr70String.setVisible(true);
+				distr80String.setVisible(true);
+				distr90String.setVisible(true);
+				distr100String.setVisible(true);
+				
+				summaryPanel.setVisible(false);
 			}
 		});
 		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				gaFile.refresh();
+				
+				distr0.setText("" + minPoss);
+				distr10.setText("" + gaFile.getValues(9));
+				distr20.setText("" + gaFile.getValues(8));
+				distr30.setText("" + gaFile.getValues(7));
+				distr40.setText("" + gaFile.getValues(6));
+				distr50.setText("" + gaFile.getValues(5));
+				distr60.setText("" + gaFile.getValues(4));
+				distr70.setText("" + gaFile.getValues(3));
+				distr80.setText("" + gaFile.getValues(2));
+				distr90.setText("" + gaFile.getValues(1));
+				distr100.setText("" + maxPoss);
+				
+				gradeAString.setVisible(false);
+				gradeBString.setVisible(false);
+				gradeCString.setVisible(false);
+				gradeDString.setVisible(false);
+				gradeEString.setVisible(false);
+				
+				gradeA.setVisible(false);
+				gradeB.setVisible(false);
+				gradeC.setVisible(false);
+				gradeD.setVisible(false);
+				gradeE.setVisible(false);
+				
+				setGradeCutOff.setVisible(false);
+				
+				cutOffA.setVisible(false);
+				cutOffB.setVisible(false);
+				cutOffC.setVisible(false);
+				cutOffD.setVisible(false);
+				
+				cutOffAString.setVisible(false);
+				cutOffBString.setVisible(false);
+				cutOffCString.setVisible(false);
+				cutOffDString.setVisible(false);
+				
+				highPPoss.setVisible(false);
+		    	lowPPoss.setVisible(false);
+		    	highEarned.setVisible(false);
+		    	lowEarned.setVisible(false);
+		    	average.setVisible(false);
+		    	median.setVisible(false);
+		    	
+				highPPossString.setVisible(false);
+		    	lowPPossString.setVisible(false);
+		    	highEarnedString.setVisible(false);
+		    	lowEarnedString.setVisible(false);
+		    	averageString.setVisible(false);
+		    	medianString.setVisible(false);
+		    	
+		    	btnRename.setVisible(false);
+		    	
+		    	newFileNameString.setVisible(false);
+				newFileName.setVisible(false);
+				continueName.setVisible(false);
+				
+				distr0.setVisible(true);
+				distr10.setVisible(true);
+				distr20.setVisible(true);
+				distr30.setVisible(true);
+				distr40.setVisible(true);
+				distr50.setVisible(true);
+				distr60.setVisible(true);
+				distr70.setVisible(true);
+				distr80.setVisible(true);
+				distr90.setVisible(true);
+				distr100.setVisible(true);
+				
+				distr0String.setVisible(true);
+				distr10String.setVisible(true);
+				distr20String.setVisible(true);
+				distr30String.setVisible(true);
+				distr40String.setVisible(true);
+				distr50String.setVisible(true);
+				distr60String.setVisible(true);
+				distr70String.setVisible(true);
+				distr80String.setVisible(true);
+				distr90String.setVisible(true);
+				distr100String.setVisible(true);
+				
+				summaryPanel.setVisible(false);
+				
+			}
+		});
+		
+		btnSummary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				highPPoss.setVisible(false);
+		    	lowPPoss.setVisible(false);
+		    	highEarned.setVisible(false);
+		    	lowEarned.setVisible(false);
+		    	average.setVisible(false);
+		    	median.setVisible(false);
+
+				highPPossString.setVisible(false);
+		    	lowPPossString.setVisible(false);
+		    	highEarnedString.setVisible(false);
+		    	lowEarnedString.setVisible(false);
+		    	averageString.setVisible(false);
+		    	medianString.setVisible(false);
+
+		    	btnRename.setVisible(false);
+
+		    	newFileNameString.setVisible(true);
+		    	newFileNameString.setVisible(false);
+				newFileName.setVisible(false);
+				continueName.setVisible(false);
+				
+				distr0.setVisible(false);
+				distr10.setVisible(false);
+				distr20.setVisible(false);
+				distr30.setVisible(false);
+				distr40.setVisible(false);
+				distr50.setVisible(false);
+				distr60.setVisible(false);
+				distr70.setVisible(false);
+				distr80.setVisible(false);
+				distr90.setVisible(false);
+				distr100.setVisible(false);
+				
+				distr0String.setVisible(false);
+				distr10String.setVisible(false);
+				distr20String.setVisible(false);
+				distr30String.setVisible(false);
+				distr40String.setVisible(false);
+				distr50String.setVisible(false);
+				distr60String.setVisible(false);
+				distr70String.setVisible(false);
+				distr80String.setVisible(false);
+				distr90String.setVisible(false);
+				distr100String.setVisible(false);
+
+				summaryPanel.setVisible(true);
 			}
 		});
 		
@@ -1095,10 +1568,6 @@ public class Home {
 		//Functionality for 'Exit' button
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-				
 				System.exit(0);
 			}
 		});
