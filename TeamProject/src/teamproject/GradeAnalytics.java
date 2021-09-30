@@ -48,16 +48,19 @@ public class GradeAnalytics {
 	private int numberOfEs;
 	
 	//first distribution Max Poss
-	private int numberOf0sP;
-	private int numberOf10sP;
-	private int numberOf20sP;
-	private int numberOf30sP;
-	private int numberOf40sP;
-	private int numberOf50sP;
-	private int numberOf60sP;
-	private int numberOf70sP;
-	private int numberOf80sP;
-	private int numberOf90sP;
+	private double numberOf0sP;
+	private double numberOf10sP;
+	private double numberOf20sP;
+	private double numberOf30sP;
+	private double numberOf40sP;
+	private double numberOf50sP;
+	private double numberOf60sP;
+	private double numberOf70sP;
+	private double numberOf80sP;
+	private double numberOf90sP;
+	private double numberOf100sP;
+	
+	float[] distribution = new float[11];
 	
 	//second distribution Max Value
 	private int numberOf0sV;
@@ -79,6 +82,7 @@ public class GradeAnalytics {
 	public GradeAnalytics(float minPoss, float maxPoss) {
 		this.minPoss = minPoss;
 		this.maxPoss = maxPoss;
+		refresh();
 	}
 	
 	/**Constructor that sets minPoss and maxPoss from FileInput (?)
@@ -102,16 +106,27 @@ public class GradeAnalytics {
 		return list;
 	}
 	
+	public int getSize() {
+		return list.size();
+	}
+	
 	public void refresh() {
-		setMaxScore();
-		setMinScore();
-		setAverage();
-		//setMedian();
+		if(list.isEmpty()) {
+			maxValue = 0.0f;
+			minValue = 0.0f;
+			averageValue = 0.0f;
+			medianValue = 0.0f;
+		} else {
+			setMaxScore();
+			setMinScore();
+			setAverage();
+			setMedian();
 		
-		determineGrades();
-		determineTop();
-		distributionMaxPoss();
-		distributionMaxValue();
+			determineGrades();
+			determineTop();
+			distributionMaxPoss();
+			distributionMaxValue();
+		}
 	
 	}
 	
@@ -160,27 +175,35 @@ public class GradeAnalytics {
 	 */
 	//NOT WORKING PROPERLY AT THIS POINT 
 	public void setMedian() {
-		orderedList.add(list.get(0));
+		if(list != null) {
+			orderedList.clear();
+			orderedList.add(list.get(0));
 		
-		for(indexOfList = 1; indexOfList < list.size(); indexOfList++) {
-			indexOfOrderedList = 0;
+			for(indexOfList = 1; indexOfList < list.size(); indexOfList++) {
+				indexOfOrderedList = 0;
 			
-			while (orderedList.get(indexOfOrderedList) != null && 
-					list.get(indexOfList) < orderedList.get(indexOfOrderedList)) {
-				indexOfOrderedList++;
-			}
-			//parses list, until find a place to insert. If end, it will see that it's null and exit as well
-			//then insert into place
+				while (indexOfOrderedList < indexOfList && 
+						list.get(indexOfList) < orderedList.get(indexOfOrderedList)) {
+					indexOfOrderedList++;
+				} 
+			
+				//parses list, until find a place to insert. If end, it will see that it's null and exit as well
+				//then insert into place
 	
-			orderedList.add(indexOfOrderedList, list.get(indexOfList));
-			//Check cause this might not work? I think it should.
-		}
+				orderedList.add(indexOfOrderedList, list.get(indexOfList));
+
+				//Check cause this might not work? I think it should.
+			}
+
 		
-		if (orderedList.size() % 2 == 0) { //if even amount of numbers, average between 2 middle numbers
-			medianValue = (orderedList.get((orderedList.size() / 2) - 1) + 
-					orderedList.get((orderedList.size() / 2) - 1)) / 2; 
-		} else { //if odd, get median
-			medianValue = orderedList.get(orderedList.size() / 2);
+			if (orderedList.size() % 2 == 0) { //if even amount of numbers, average between 2 middle numbers
+				medianValue = (orderedList.get((orderedList.size() / 2) - 1) + 
+						orderedList.get(orderedList.size() / 2)) / 2; 
+			} else { //if odd, get median
+				medianValue = orderedList.get(orderedList.size() / 2);
+			}
+		} else {
+			medianValue = (float) 0.0;
 		}
 	}
 	
@@ -228,18 +251,17 @@ public class GradeAnalytics {
 		numberOfEs = 0;
 		
 		for(indexOfList = 0; indexOfList < list.size(); indexOfList++) {
-			if(list.get(indexOfList) / maxPoss < dsCutOff) {
+			if((list.get(indexOfList) / maxPoss) < dsCutOff/100) {
 				numberOfEs++;
-			} else if(list.get(indexOfList) / maxPoss < csCutOff) {
+			} else if((list.get(indexOfList) / maxPoss) < csCutOff/100) {
 				numberOfDs++;
-			} else if(list.get(indexOfList) / maxPoss < bsCutOff) {
+			} else if((list.get(indexOfList) / maxPoss) < bsCutOff/100) {
 				numberOfCs++;
-			} else if(list.get(indexOfList) / maxPoss < asCutOff) {
+			} else if((list.get(indexOfList) / maxPoss) < asCutOff/100) {
 				numberOfBs++;
 			} else {
 				numberOfAs++;
 			}
-			indexOfList++;
 		}
 		
 	}
@@ -390,33 +412,31 @@ public class GradeAnalytics {
 		numberOf70sP = 0;
 		numberOf80sP = 0;
 		numberOf90sP = 0;
+		numberOf100sP = 0;
 		
-		for(indexOfList = 0; indexOfList < list.size(); indexOfList++) {
-			if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 10.0f) {
-				numberOf0sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 20.0f) {
-				numberOf10sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 30.0f) {
-				numberOf20sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 40.0f) {
-				numberOf30sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 50.0f) {
-				numberOf40sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 60.0f) {
-				numberOf50sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 70.0f) {
-				numberOf60sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 80.0f) {
-				numberOf70sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 90.0f) {
-				numberOf80sP++;
-			} else if((list.get(indexOfList) - minPoss) / (maxPoss - minPoss) < 100.0f) {
-				numberOf90sP++;
-			}
-			indexOfList++;
+
+		setMedian();
+		double aveSize = orderedList.size()/10.0;
+		double parseValue = 0;
+
+		if(orderedList.size() >= 10) {
+			
+			distribution[0] = orderedList.get((int) Math.rint(parseValue));
+			parseValue = parseValue + aveSize;
+			
+		for(int i = 1; i < 10; i++) {
+			distribution[i] = orderedList.get((int) Math.rint(parseValue-1));
+			parseValue = parseValue + aveSize;
 		}
 		
+		distribution[10] = minValue;
+		}
+
 		
+	}
+	
+	public float getValues(int i) {
+		return distribution[i];
 	}
 	
 	/** Determines distribution as a result of MaxPoss
